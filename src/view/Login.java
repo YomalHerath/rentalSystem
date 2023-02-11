@@ -18,8 +18,6 @@ public class Login extends JDialog {
     private JPasswordField passwordField1;
     private JButton btnSignIn;
     private JLabel lblImage;
-    private JButton btnCancel;
-
 
     public Login(JFrame jFrame){
         super(jFrame);
@@ -31,12 +29,7 @@ public class Login extends JDialog {
         //display dialog in the middle of the frame
         setLocationRelativeTo(jFrame);
         setVisible(true);
-        btnCancel.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                dispose();
-            }
-        });
+
     }
 
     public static void main(String[] args) {
