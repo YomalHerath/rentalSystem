@@ -3,16 +3,14 @@ package view;
 import javax.swing.*;
 import java.awt.*;
 
-public class ManagerDashboard extends JDialog {
-    private JPanel ManagerDashboardPanel;
-    private JButton btnReservations;
-    private JButton btnRooms;
-    private JButton btnEmployees;
+public class UserManagement extends JDialog {
+    private JPanel UserManagePanel;
+    private JLabel lblTxt;
 
-    public ManagerDashboard(JFrame jFrame){
+    public UserManagement(JFrame jFrame){
         super(jFrame);
         setTitle("Room Rental System");
-        setContentPane(ManagerDashboardPanel);
+        setContentPane(UserManagePanel);
         //set minimum size for dialog
         setMinimumSize(new Dimension(1280,720));
         setModal(true);
@@ -22,7 +20,6 @@ public class ManagerDashboard extends JDialog {
     }
 
     public static void main(String[] args) {
-        ManagerDashboard dashboard = new ManagerDashboard(null);
+        UserManagement dashboard = new UserManagement(null);
     }
-
 }
