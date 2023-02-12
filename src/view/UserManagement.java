@@ -6,6 +6,20 @@ import java.awt.*;
 public class UserManagement extends JDialog {
     private JPanel UserManagePanel;
     private JLabel lblTxt;
+    private JLabel lblUsername;
+    private JTextField tFieldUsername;
+    private JLabel lblEmail;
+    private JLabel lblPassword;
+    private JLabel lblUserType;
+    private JTextField tFieldEmail;
+    private JTextField tFieldPassword;
+    private JComboBox comboBoxUserType;
+    private JButton btnSave;
+    private JButton btnUpdate;
+    private JButton btnDelete;
+    private JButton btnSearch;
+    private JLabel lblFormText;
+    private JTable table1;
 
     public UserManagement(JFrame jFrame){
         super(jFrame);
