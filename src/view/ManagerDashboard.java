@@ -5,8 +5,9 @@ import java.awt.*;
 
 public class ManagerDashboard extends JDialog {
     private JPanel ManagerDashboardPanel;
-    private JLabel lblText;
-    private JButton btnAddReservation;
+    private JButton btnReservations;
+    private JButton btnRooms;
+    private JButton btnEmployees;
 
     public ManagerDashboard(JFrame jFrame){
         super(jFrame);
