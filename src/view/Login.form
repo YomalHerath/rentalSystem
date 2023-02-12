@@ -75,6 +75,7 @@
                   <component id="d169d" class="javax.swing.JTextField" binding="textField1" default-binding="true">
                     <constraints border-constraint="Center"/>
                     <properties>
+                      <autoscrolls value="false"/>
                       <font name="Fira Code" size="14" style="0"/>
                     </properties>
                   </component>
@@ -100,6 +101,7 @@
                   <component id="c16fc" class="javax.swing.JPasswordField" binding="passwordField1" default-binding="true">
                     <constraints border-constraint="Center"/>
                     <properties>
+                      <autoscrolls value="false"/>
                       <font name="Fira Code" size="14" style="0"/>
                     </properties>
                   </component>
@@ -120,6 +122,7 @@
                 <properties>
                   <alignmentX value="0.5"/>
                   <background color="-7453523"/>
+                  <borderPainted value="false"/>
                   <font name="Fira Code" size="14" style="1"/>
                   <foreground color="-1"/>
                   <preferredSize width="300" height="38"/>
