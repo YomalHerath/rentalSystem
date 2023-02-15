@@ -16,6 +16,7 @@ public class Login extends JDialog {
     private JPasswordField passwordField1;
     private JButton btnSignIn;
     private JLabel lblImage;
+    private JButton btnCancel;
 
     public Login(JFrame jFrame){
         super(jFrame);

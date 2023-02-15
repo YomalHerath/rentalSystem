@@ -13,7 +13,7 @@
       <grid id="dcf42" binding="JPanel1" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
         <constraints border-constraint="West"/>
         <properties>
-          <background color="-724993"/>
+          <background color="-1313285"/>
           <maximumSize width="0" height="0"/>
           <minimumSize width="0" height="0"/>
           <opaque value="true"/>
@@ -24,7 +24,7 @@
           <grid id="ef2cb" binding="JPanel2" layout-manager="BorderLayout" hgap="0" vgap="0">
             <constraints/>
             <properties>
-              <background color="-724993"/>
+              <background color="-1313285"/>
               <minimumSize width="0" height="0"/>
               <preferredSize width="400" height="80"/>
             </properties>
@@ -46,7 +46,7 @@
           <grid id="a2601" binding="JPanel3" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
             <constraints/>
             <properties>
-              <background color="-724993"/>
+              <background color="-1313285"/>
               <focusCycleRoot value="false"/>
               <focusTraversalPolicyProvider value="false"/>
               <opaque value="true"/>
@@ -58,7 +58,7 @@
               <grid id="ccee4" layout-manager="BorderLayout" hgap="5" vgap="0">
                 <constraints/>
                 <properties>
-                  <background color="-724993"/>
+                  <background color="-1313285"/>
                   <font name="Fira Code" size="14" style="1"/>
                   <preferredSize width="300" height="50"/>
                 </properties>
@@ -84,7 +84,7 @@
               <grid id="c57d0" layout-manager="BorderLayout" hgap="0" vgap="0">
                 <constraints/>
                 <properties>
-                  <background color="-724993"/>
+                  <background color="-1313285"/>
                   <font name="Fira Code" size="14" style="1"/>
                   <preferredSize width="300" height="50"/>
                 </properties>
@@ -110,7 +110,7 @@
               <grid id="8afdd" layout-manager="BorderLayout" hgap="0" vgap="0">
                 <constraints/>
                 <properties>
-                  <background color="-724993"/>
+                  <background color="-1313285"/>
                   <font name="Fira Code" size="14" style="1"/>
                   <preferredSize width="300" height="30"/>
                 </properties>
@@ -130,8 +130,8 @@
           <grid id="91eca" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
             <constraints/>
             <properties>
-              <background color="-724993"/>
-              <preferredSize width="400" height="50"/>
+              <background color="-1313285"/>
+              <preferredSize width="400" height="45"/>
             </properties>
             <border type="none"/>
             <children>
@@ -139,12 +139,34 @@
                 <constraints/>
                 <properties>
                   <alignmentX value="0.5"/>
-                  <background color="-7453523"/>
+                  <background color="-13728063"/>
                   <borderPainted value="false"/>
                   <font name="Fira Code" size="14" style="1"/>
                   <foreground color="-1"/>
                   <preferredSize width="300" height="38"/>
                   <text value="Sign In"/>
+                </properties>
+              </component>
+            </children>
+          </grid>
+          <grid id="622a5" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
+            <constraints/>
+            <properties>
+              <background color="-1313285"/>
+              <preferredSize width="400" height="45"/>
+            </properties>
+            <border type="none"/>
+            <children>
+              <component id="ab049" class="javax.swing.JButton" binding="btnCancel">
+                <constraints/>
+                <properties>
+                  <alignmentX value="0.5"/>
+                  <background color="-13728063"/>
+                  <borderPainted value="false"/>
+                  <font name="Fira Code" size="14" style="1"/>
+                  <foreground color="-1"/>
+                  <preferredSize width="300" height="38"/>
+                  <text value="Cancel"/>
                 </properties>
               </component>
             </children>
