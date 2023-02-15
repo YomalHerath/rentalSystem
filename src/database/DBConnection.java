@@ -13,7 +13,7 @@ public class DBConnection {
 
     static Connection con;
     static String driver = "com.mysql.jdbc.Driver";
-    static String url = "jdbc:mysql://localhost/rental_system";
+    static String url = "jdbc:mysql://localhost:3306/rental_system";
     static String uname = "root";
     static String pass = "";
 
