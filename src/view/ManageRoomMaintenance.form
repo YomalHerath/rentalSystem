@@ -139,6 +139,7 @@
           <scrollpane id="d1710" binding="tableMaintenanceDetails">
             <constraints/>
             <properties>
+              <font name="Fira Code" size="14" style="0"/>
               <preferredSize width="1200" height="400"/>
             </properties>
             <border type="none"/>

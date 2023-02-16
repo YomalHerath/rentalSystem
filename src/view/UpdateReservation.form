@@ -230,6 +230,7 @@
                   <component id="3fb5c" class="javax.swing.JComboBox" binding="comboBoxOccation">
                     <constraints border-constraint="Center"/>
                     <properties>
+                      <font name="Fira Code" size="14" style="0"/>
                       <model>
                         <item value="During Term TIme"/>
                         <item value="Holiday"/>
@@ -259,6 +260,7 @@
                   <component id="940f0" class="javax.swing.JComboBox">
                     <constraints border-constraint="Center"/>
                     <properties>
+                      <font name="Fira Code" size="14" style="0"/>
                       <model>
                         <item value="In Progress"/>
                         <item value="Completed"/>

@@ -152,7 +152,9 @@
                   </component>
                   <component id="ae567" class="javax.swing.JPasswordField" binding="tFieldPassword">
                     <constraints border-constraint="Center"/>
-                    <properties/>
+                    <properties>
+                      <font name="Fira Code" size="14" style="0"/>
+                    </properties>
                   </component>
                 </children>
               </grid>
@@ -175,7 +177,9 @@
                   </component>
                   <component id="bc52" class="javax.swing.JPasswordField" binding="tFieldCPassword">
                     <constraints border-constraint="Center"/>
-                    <properties/>
+                    <properties>
+                      <font name="Fira Code" size="14" style="0"/>
+                    </properties>
                   </component>
                 </children>
               </grid>

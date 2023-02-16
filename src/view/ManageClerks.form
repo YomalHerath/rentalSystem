@@ -136,6 +136,7 @@
           <scrollpane id="f13c3">
             <constraints/>
             <properties>
+              <font name="Fira Code" size="14" style="0"/>
               <preferredSize width="1200" height="350"/>
             </properties>
             <border type="none"/>

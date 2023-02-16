@@ -233,6 +233,7 @@
                   <component id="ff9e1" class="javax.swing.JComboBox" binding="comboBoxOccation">
                     <constraints border-constraint="Center"/>
                     <properties>
+                      <font name="Fira Code" size="14" style="0"/>
                       <model>
                         <item value="During Term TIme"/>
                         <item value="Holiday"/>
