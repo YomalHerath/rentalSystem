@@ -3,7 +3,7 @@ package view;
 import javax.swing.*;
 import java.awt.*;
 
-public class ManageReservationDetails extends JDialog{
+public class ManageReservation extends JDialog{
     private JPanel JPanel2;
     private JLabel lblManageRoom;
     private JTextField tFieldReservationSearch;
@@ -14,7 +14,7 @@ public class ManageReservationDetails extends JDialog{
     private JButton btnViewReservation;
     private JTextField tFieldReservationId;
 
-    public ManageReservationDetails(JFrame jFrame){
+    public ManageReservation(JFrame jFrame){
         super(jFrame);
         setTitle("Room Rental System");
         setContentPane(ManageReservationPanel);
@@ -27,6 +27,6 @@ public class ManageReservationDetails extends JDialog{
     }
 
     public static void main(String[] args) {
-        ManageReservationDetails manageReservationDetails = new ManageReservationDetails(null);
+        ManageReservation manageReservationDetails = new ManageReservation(null);
     }
 }

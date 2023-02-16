@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="view.AddRoomDetails">
-  <grid id="27dc6" binding="AddRoomDetailsPanel" layout-manager="BorderLayout" hgap="0" vgap="0">
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="view.UpdateRooms">
+  <grid id="27dc6" binding="UpdateRoomPanel" layout-manager="BorderLayout" hgap="0" vgap="0">
     <constraints>
-      <xy x="20" y="20" width="412" height="416"/>
+      <xy x="20" y="20" width="402" height="400"/>
     </constraints>
     <properties>
       <preferredSize width="400" height="450"/>
     </properties>
     <border type="none"/>
     <children>
-      <grid id="5a4bc" binding="JPanel1" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
-        <constraints border-constraint="Center"/>
+      <grid id="c9871" binding="JPanel1" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
+        <constraints border-constraint="West"/>
         <properties>
           <background color="-1313285"/>
           <maximumSize width="0" height="0"/>
@@ -20,7 +20,7 @@
         </properties>
         <border type="none"/>
         <children>
-          <grid id="e5875" binding="JPanel2" layout-manager="BorderLayout" hgap="0" vgap="0">
+          <grid id="b406b" binding="JPanel2" layout-manager="BorderLayout" hgap="0" vgap="0">
             <constraints/>
             <properties>
               <background color="-1313285"/>
@@ -29,7 +29,7 @@
             </properties>
             <border type="none"/>
             <children>
-              <component id="72239" class="javax.swing.JLabel" binding="lblAddRoom">
+              <component id="8ed4c" class="javax.swing.JLabel" binding="lblUpdateRoom">
                 <constraints border-constraint="Center"/>
                 <properties>
                   <alignmentX value="0.5"/>
@@ -37,12 +37,12 @@
                   <font name="Fira Code" size="24" style="1"/>
                   <horizontalAlignment value="0"/>
                   <horizontalTextPosition value="0"/>
-                  <text value="ADD ROOM DETAILS"/>
+                  <text value="UPDATE ROOM DETAILS"/>
                 </properties>
               </component>
             </children>
           </grid>
-          <grid id="6e40f" binding="JPanel3" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
+          <grid id="fe410" binding="JPanel3" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
             <constraints/>
             <properties>
               <background color="-1313285"/>
@@ -54,7 +54,7 @@
             </properties>
             <border type="none"/>
             <children>
-              <grid id="3d69c" layout-manager="BorderLayout" hgap="5" vgap="0">
+              <grid id="73764" layout-manager="BorderLayout" hgap="5" vgap="0">
                 <constraints/>
                 <properties>
                   <background color="-1313285"/>
@@ -63,7 +63,7 @@
                 </properties>
                 <border type="none"/>
                 <children>
-                  <component id="df2c4" class="javax.swing.JLabel" binding="lblRoomNo">
+                  <component id="f7c75" class="javax.swing.JLabel" binding="lblRoomNo">
                     <constraints border-constraint="North"/>
                     <properties>
                       <font name="Fira Code" size="14" style="0"/>
@@ -71,7 +71,7 @@
                       <text value="Room No"/>
                     </properties>
                   </component>
-                  <component id="fe01b" class="javax.swing.JTextField" binding="tFieldRoomNo">
+                  <component id="a1604" class="javax.swing.JTextField" binding="tFieldRoomNo">
                     <constraints border-constraint="Center"/>
                     <properties>
                       <autoscrolls value="false"/>
@@ -80,7 +80,7 @@
                   </component>
                 </children>
               </grid>
-              <grid id="b267b" layout-manager="BorderLayout" hgap="0" vgap="0">
+              <grid id="836ab" layout-manager="BorderLayout" hgap="0" vgap="0">
                 <constraints/>
                 <properties>
                   <background color="-1313285"/>
@@ -89,7 +89,7 @@
                 </properties>
                 <border type="none"/>
                 <children>
-                  <component id="fa3bb" class="javax.swing.JLabel" binding="lblRoomType">
+                  <component id="c5360" class="javax.swing.JLabel" binding="lblRoomType">
                     <constraints border-constraint="North"/>
                     <properties>
                       <font name="Fira Code" size="14" style="0"/>
@@ -97,15 +97,16 @@
                       <text value="Room Type"/>
                     </properties>
                   </component>
-                  <component id="b8968" class="javax.swing.JComboBox" binding="comboBoxRoomType">
+                  <component id="8cb5e" class="javax.swing.JComboBox" binding="comboBoxRoomType">
                     <constraints border-constraint="Center"/>
                     <properties>
                       <font name="Fira Code" size="14" style="0"/>
+                      <model/>
                     </properties>
                   </component>
                 </children>
               </grid>
-              <grid id="c6375" layout-manager="BorderLayout" hgap="0" vgap="0">
+              <grid id="89283" layout-manager="BorderLayout" hgap="0" vgap="0">
                 <constraints/>
                 <properties>
                   <background color="-1313285"/>
@@ -114,7 +115,7 @@
                 </properties>
                 <border type="none"/>
                 <children>
-                  <component id="983e9" class="javax.swing.JLabel">
+                  <component id="515a7" class="javax.swing.JLabel">
                     <constraints border-constraint="North"/>
                     <properties>
                       <font name="Fira Code" size="14" style="0"/>
@@ -122,7 +123,7 @@
                       <text value="Room Size"/>
                     </properties>
                   </component>
-                  <component id="1d73b" class="javax.swing.JComboBox" binding="comboBoxRoomSize">
+                  <component id="47265" class="javax.swing.JComboBox" binding="comboBoxRoomSize">
                     <constraints border-constraint="Center"/>
                     <properties>
                       <font name="Fira Code" size="14" style="0"/>
@@ -132,7 +133,7 @@
               </grid>
             </children>
           </grid>
-          <grid id="d6189" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
+          <grid id="32291" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
             <constraints/>
             <properties>
               <background color="-1313285"/>
@@ -140,7 +141,7 @@
             </properties>
             <border type="none"/>
             <children>
-              <component id="89ace" class="javax.swing.JButton" binding="btnSave">
+              <component id="14208" class="javax.swing.JButton" binding="btnUpdate">
                 <constraints/>
                 <properties>
                   <alignmentX value="0.5"/>
@@ -149,10 +150,10 @@
                   <font name="Fira Code" size="14" style="1"/>
                   <foreground color="-1"/>
                   <preferredSize width="300" height="38"/>
-                  <text value="Save"/>
+                  <text value="Update"/>
                 </properties>
               </component>
-              <component id="d1c1f" class="javax.swing.JButton" binding="btnCancel">
+              <component id="bf0e0" class="javax.swing.JButton" binding="btnCancel">
                 <constraints/>
                 <properties>
                   <actionCommand value="Cancel"/>

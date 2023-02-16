@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="view.ManageClerks">
+  <grid id="27dc6" binding="ManageClerksPanel" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
+    <constraints>
+      <xy x="20" y="20" width="1297" height="613"/>
+    </constraints>
+    <properties>
+      <background color="-1313285"/>
+      <preferredSize width="1280" height="720"/>
+    </properties>
+    <border type="none"/>
+    <children>
+      <grid id="1a97" binding="JPanel2" layout-manager="BorderLayout" hgap="0" vgap="0">
+        <constraints/>
+        <properties>
+          <background color="-1313285"/>
+          <minimumSize width="0" height="0"/>
+          <preferredSize width="1280" height="50"/>
+        </properties>
+        <border type="none"/>
+        <children>
+          <component id="2fcce" class="javax.swing.JLabel" binding="lblManageClerks">
+            <constraints border-constraint="Center"/>
+            <properties>
+              <alignmentX value="0.5"/>
+              <background color="-1"/>
+              <font name="Fira Code" size="24" style="1"/>
+              <horizontalAlignment value="0"/>
+              <horizontalTextPosition value="0"/>
+              <text value="MANAGE CLERKS DETAILS"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+      <grid id="eb11f" layout-manager="FlowLayout" hgap="40" vgap="5" flow-align="0">
+        <constraints/>
+        <properties>
+          <background color="-1313285"/>
+          <minimumSize width="0" height="0"/>
+          <preferredSize width="1280" height="50"/>
+        </properties>
+        <border type="none"/>
+        <children>
+          <component id="968ef" class="javax.swing.JButton" binding="btnAddClerks">
+            <constraints/>
+            <properties>
+              <alignmentX value="0.5"/>
+              <background color="-13728063"/>
+              <font name="Fira Code" size="14" style="1"/>
+              <foreground color="-1"/>
+              <horizontalAlignment value="0"/>
+              <horizontalTextPosition value="0"/>
+              <preferredSize width="175" height="40"/>
+              <text value="Add Room Details"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+      <grid id="35b3c" layout-manager="FlowLayout" hgap="40" vgap="5" flow-align="0">
+        <constraints/>
+        <properties>
+          <background color="-1313285"/>
+          <minimumSize width="0" height="0"/>
+          <preferredSize width="1280" height="50"/>
+        </properties>
+        <border type="none"/>
+        <children>
+          <component id="9288c" class="javax.swing.JTextField" binding="tFieldClerksSearch">
+            <constraints/>
+            <properties>
+              <font name="Fira Code" size="14" style="0"/>
+              <preferredSize width="275" height="40"/>
+            </properties>
+          </component>
+          <component id="af06d" class="javax.swing.JButton" binding="btnClerksSearch">
+            <constraints/>
+            <properties>
+              <actionCommand value="Room Search"/>
+              <alignmentX value="0.5"/>
+              <background color="-13728063"/>
+              <font name="Fira Code" size="14" style="1"/>
+              <foreground color="-1"/>
+              <horizontalAlignment value="0"/>
+              <horizontalTextPosition value="0"/>
+              <inheritsPopupMenu value="false"/>
+              <label value="Search"/>
+              <preferredSize width="175" height="40"/>
+              <text value="Search"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+      <grid id="aa43b" layout-manager="FlowLayout" hgap="40" vgap="5" flow-align="0">
+        <constraints/>
+        <properties>
+          <background color="-1313285"/>
+          <minimumSize width="0" height="0"/>
+          <preferredSize width="1280" height="50"/>
+        </properties>
+        <border type="none"/>
+        <children>
+          <component id="2b4e6" class="javax.swing.JTextField" binding="tFieldClerksId">
+            <constraints/>
+            <properties>
+              <font name="Fira Code" size="14" style="0"/>
+              <preferredSize width="275" height="40"/>
+            </properties>
+          </component>
+          <component id="7737" class="javax.swing.JButton" binding="btnUpdateClerks">
+            <constraints/>
+            <properties>
+              <actionCommand value="Room Update"/>
+              <alignmentX value="0.5"/>
+              <background color="-13728063"/>
+              <font name="Fira Code" size="14" style="1"/>
+              <foreground color="-1"/>
+              <horizontalAlignment value="0"/>
+              <horizontalTextPosition value="0"/>
+              <inheritsPopupMenu value="false"/>
+              <label value="Update"/>
+              <preferredSize width="175" height="40"/>
+              <text value="Update"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+      <grid id="d5817" layout-manager="FlowLayout" hgap="35" vgap="5" flow-align="1">
+        <constraints/>
+        <properties>
+          <background color="-1313285"/>
+          <minimumSize width="0" height="0"/>
+          <preferredSize width="1280" height="380"/>
+        </properties>
+        <border type="none"/>
+        <children>
+          <scrollpane id="f13c3">
+            <constraints/>
+            <properties>
+              <preferredSize width="1200" height="350"/>
+            </properties>
+            <border type="none"/>
+            <children>
+              <component id="53d70" class="javax.swing.JTable" binding="tableClerksDetails">
+                <constraints/>
+                <properties>
+                  <autoCreateRowSorter value="true"/>
+                  <dropMode value="USE_SELECTION"/>
+                  <enabled value="false"/>
+                  <fillsViewportHeight value="false"/>
+                  <font name="Fira Code" size="14" style="0"/>
+                  <preferredSize width="1280" height="350"/>
+                </properties>
+                <clientProperties>
+                  <Table.isFileList class="java.lang.Boolean" value="false"/>
+                </clientProperties>
+              </component>
+            </children>
+          </scrollpane>
+        </children>
+      </grid>
+    </children>
+  </grid>
+</form>

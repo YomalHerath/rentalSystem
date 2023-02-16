@@ -3,24 +3,24 @@ package view;
 import javax.swing.*;
 import java.awt.*;
 
-public class UpdateRoomDetails extends JDialog {
+public class AddRooms extends JDialog {
+    private JPanel AddRoomDetailsPanel;
     private JPanel JPanel1;
     private JPanel JPanel2;
-    private JLabel lblUpdateRoom;
+    private JLabel lblAddRoom;
     private JPanel JPanel3;
     private JLabel lblRoomNo;
     private JTextField tFieldRoomNo;
     private JLabel lblRoomType;
+    private JButton btnSave;
     private JComboBox comboBoxRoomType;
-    private JButton btnUpdate;
     private JButton btnCancel;
-    private JPanel UpdateRoomPanel;
     private JComboBox comboBoxRoomSize;
 
-    public UpdateRoomDetails(JFrame jFrame){
+    public AddRooms(JFrame jFrame){
         super(jFrame);
         setTitle("Room Rental System");
-        setContentPane(UpdateRoomPanel);
+        setContentPane(AddRoomDetailsPanel);
         //set minimum size for dialog
         setMinimumSize(new Dimension(400,450));
         setModal(true);
@@ -31,7 +31,7 @@ public class UpdateRoomDetails extends JDialog {
     }
 
     public static void main(String[] args) {
-        UpdateRoomDetails updateRoomDetails = new UpdateRoomDetails(null);
+        AddRooms addRoomDetails = new AddRooms(null);
     }
 
 }

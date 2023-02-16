@@ -4,7 +4,7 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 
-public class ManageRoomDetails extends JDialog {
+public class ManageRooms extends JDialog {
     private JPanel ManageRoomPanel;
     private JPanel JPanel2;
     private JLabel lblManageRoom;
@@ -26,7 +26,7 @@ public class ManageRoomDetails extends JDialog {
         ));
     }
 
-    public ManageRoomDetails(JFrame jFrame){
+    public ManageRooms(JFrame jFrame){
         super(jFrame);
         setTitle("Room Rental System");
         setContentPane(ManageRoomPanel);
@@ -39,7 +39,7 @@ public class ManageRoomDetails extends JDialog {
     }
 
     public static void main(String[] args) {
-        ManageRoomDetails manageRoomDetails = new ManageRoomDetails(null);
+        ManageRooms manageRoomDetails = new ManageRooms(null);
     }
 
 }
