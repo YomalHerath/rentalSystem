@@ -12,8 +12,9 @@ public class ManageRoomDetails extends JDialog {
     private JTextField tFieldRoomSearch;
     private JButton btnRoomSearch;
     private JTable tableRoomDetails;
-    private JButton btnRoomUpdate;
-    private JButton btnRoomReservation;
+    private JButton btnUpdateRoom;
+    private JButton btnAddReservation;
+    private JTextField tFieldRoomId;
 
     // create heading for table with create table method
     void createTable() {

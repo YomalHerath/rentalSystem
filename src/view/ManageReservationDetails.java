@@ -8,10 +8,11 @@ public class ManageReservationDetails extends JDialog{
     private JLabel lblManageRoom;
     private JTextField tFieldReservationSearch;
     private JButton btnReservationSearch;
-    private JButton btnRoomUpdate;
-    private JButton btnRoomReservation;
     private JTable tableReservationDetails;
     private JPanel ManageReservationPanel;
+    private JButton btnUpdateReservation;
+    private JButton btnViewReservation;
+    private JTextField tFieldReservationId;
 
     public ManageReservationDetails(JFrame jFrame){
         super(jFrame);
