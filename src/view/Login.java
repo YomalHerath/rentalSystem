@@ -11,9 +11,9 @@ public class Login extends JDialog {
     private JPanel JPanel3;
     private JPanel JPanel4;
     private JLabel lblEmail;
-    private JTextField textField1;
+    private JTextField tFieldEmail;
     private JLabel lblPassword;
-    private JPasswordField passwordField1;
+    private JPasswordField tFieldPassword;
     private JButton btnSignIn;
     private JLabel lblImage;
     private JButton btnCancel;

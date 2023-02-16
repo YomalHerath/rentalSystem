@@ -17,6 +17,7 @@ public class ForgotPassword extends JDialog {
     private JPanel ForgotPassPanel;
     private JButton btnCancel;
     private JPasswordField tFieldPassword;
+    private JTextField tFieldEmail;
 
     public ForgotPassword(JFrame jFrame){
         super(jFrame);
