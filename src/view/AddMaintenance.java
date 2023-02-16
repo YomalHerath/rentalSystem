@@ -6,7 +6,7 @@ import java.awt.*;
 public class AddMaintenance extends JDialog {
     private JPanel JPanel1;
     private JPanel JPanel2;
-    private JLabel lblAddReservation;
+    private JLabel lblAddMaintenance;
     private JPanel JPanel3;
     private JLabel lblRoomNo;
     private JLabel lblFillRoomNo;
@@ -19,6 +19,8 @@ public class AddMaintenance extends JDialog {
     private JButton btnSave;
     private JButton btnCancel;
     private JPanel AddMaintenancePanel;
+    private JLabel lblMaintenanceNote;
+    private JTextArea textAreaNote;
 
     public AddMaintenance(JFrame jFrame){
         super(jFrame);
