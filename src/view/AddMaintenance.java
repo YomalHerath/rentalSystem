@@ -27,7 +27,7 @@ public class AddMaintenance extends JDialog {
         setTitle("Room Rental System");
         setContentPane(AddMaintenancePanel);
         //set minimum size for dialog
-        setMinimumSize(new Dimension(400,450));
+        setMinimumSize(new Dimension(400,550));
         setModal(true);
         //display dialog in the middle of the frame
         setLocationRelativeTo(jFrame);
