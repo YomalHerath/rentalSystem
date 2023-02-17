@@ -14,7 +14,7 @@ public class ClerkImplement implements ClerkInterface {
     public void save(Clerk clerk) {
         try {
             Connection con =  DBConnection.getConnection();
-            String query = "INSERT INTO students(fullName,username,email,password) VALUES (?,?,?,?)";
+            String query = "INSERT INTO clerk(fullName,username,email,password) VALUES (?,?,?,?)";
             PreparedStatement preparedStatement = con.prepareStatement(query);
             preparedStatement.setString(1, clerk.getFullName());
             preparedStatement.setString(2, clerk.getUsername());

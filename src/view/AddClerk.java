@@ -8,7 +8,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class AddClerk extends JDialog {
+public class AddClerk extends JFrame {
     private JPanel JPanel1;
     private JPanel JPanel2;
     private JLabel lblAddClerk;
@@ -27,15 +27,13 @@ public class AddClerk extends JDialog {
     private JPasswordField tFieldPassword;
     private JPasswordField tFieldCPassword;
 
-    public AddClerk(JFrame jFrame){
-        super(jFrame);
+    public AddClerk(){
         setTitle("Room Rental System");
         setContentPane(AddClerkPanel);
         //set minimum size for dialog
         setMinimumSize(new Dimension(400,550));
-        setModal(true);
         //display dialog in the middle of the frame
-        setLocationRelativeTo(jFrame);
+        setLocationRelativeTo(AddClerkPanel);
         setVisible(true);
         btnSave.addActionListener(new ActionListener() {
             @Override
@@ -74,7 +72,7 @@ public class AddClerk extends JDialog {
     public Clerk clerk;
 
     public static void main(String[] args) {
-        AddClerk addClerk = new AddClerk(null);
+        AddClerk addClerk = new AddClerk();
         Clerk clerk = addClerk.clerk;
         if (clerk != null){
             System.out.println("not empty");
