@@ -1,7 +1,12 @@
 package view;
 
+import controller.ClerkImplement;
+import model.Clerk;
+
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class AddClerk extends JDialog {
     private JPanel JPanel1;
@@ -32,9 +37,49 @@ public class AddClerk extends JDialog {
         //display dialog in the middle of the frame
         setLocationRelativeTo(jFrame);
         setVisible(true);
+        btnSave.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Clerk clerk = new Clerk();
+                String fullName = tFieldFullName.getText();
+                String username = tFieldUsername.getText();
+                String email = tFieldEmail.getText();
+                String password = tFieldPassword.getText();
+                String cpassword = tFieldCPassword.getText();
+
+                //set text
+                clerk.setFullName(fullName);
+                clerk.setEmail(email);
+                clerk.setUsername(username);
+                clerk.setPassword(password);
+
+                ClerkImplement clerkImplement = new ClerkImplement();
+                clerkImplement.save(clerk);
+                tFieldFullName.setText("");
+                tFieldEmail.setText("");
+                tFieldUsername.setText("");
+                tFieldPassword.setText("");
+                tFieldCPassword.setText("");
+                tFieldFullName.requestFocus();
+            }
+        });
+        btnCancel.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+            }
+        });
     }
+
+    public Clerk clerk;
 
     public static void main(String[] args) {
         AddClerk addClerk = new AddClerk(null);
+        Clerk clerk = addClerk.clerk;
+        if (clerk != null){
+            System.out.println("not empty");
+        } else {
+            System.out.println("empty");
+        }
     }
 }
