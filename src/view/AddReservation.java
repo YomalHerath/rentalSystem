@@ -21,12 +21,14 @@ public class AddReservation extends JDialog {
     private JLabel lblOccation;
     private JLabel lblReservedTime;
     private JLabel lblReservedDate;
-    private JTextField tFieldRDate;
-    private JTextField tFieldRTime;
+    private JTextField tFiieldFromDate;
     private JLabel lblFillRoomNo;
     private JLabel lblRoomNo;
     private JLabel lblRoomType;
     private JLabel lblFillRoomType;
+    private JSpinner spinnerTime;
+    private JComboBox comboBoxTimeSelect;
+    private JTextField tFieldRToDate;
 
     public AddReservation(JFrame jFrame){
         super(jFrame);

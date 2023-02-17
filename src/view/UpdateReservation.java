@@ -16,17 +16,19 @@ public class UpdateReservation extends JDialog {
     private JTextField tFieldClientName;
     private JLabel lblClientContactNo;
     private JTextField tFieldContactNo;
-    private JLabel lblReservedDate;
-    private JTextField tFieldRDate;
-    private JLabel lblReservedTime;
-    private JTextField tFieldRTime;
-    private JLabel lblOccation;
-    private JComboBox comboBoxOccation;
     private JLabel lblNote;
     private JTextArea textAreaNote;
     private JButton btnUpdate;
     private JButton btnCancel;
     private JPanel UpdateReservationPanel;
+    private JLabel lblOccation;
+    private JComboBox comboBoxOccation;
+    private JLabel lblReservedDate;
+    private JTextField tFiieldFromDate;
+    private JTextField tFieldRToDate;
+    private JLabel lblReservedTime;
+    private JSpinner spinnerTime;
+    private JComboBox comboBoxTimeSelect;
 
     public UpdateReservation(JFrame jFrame){
         super(jFrame);

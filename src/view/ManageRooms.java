@@ -15,6 +15,7 @@ public class ManageRooms extends JDialog {
     private JButton btnUpdateRoom;
     private JButton btnAddReservation;
     private JTextField tFieldRoomId;
+    private JButton btnRemoveRoom;
 
     // create heading for table with create table method
     void createTable() {

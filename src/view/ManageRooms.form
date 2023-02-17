@@ -106,6 +106,22 @@
               <preferredSize width="275" height="40"/>
             </properties>
           </component>
+          <component id="a698" class="javax.swing.JButton" binding="btnAddReservation">
+            <constraints/>
+            <properties>
+              <actionCommand value="Add Reservation"/>
+              <alignmentX value="0.5"/>
+              <background color="-13728063"/>
+              <font name="Fira Code" size="14" style="1"/>
+              <foreground color="-1"/>
+              <horizontalAlignment value="0"/>
+              <horizontalTextPosition value="0"/>
+              <inheritsPopupMenu value="false"/>
+              <label value="Add Reservation"/>
+              <preferredSize width="175" height="40"/>
+              <text value="Add Reservation"/>
+            </properties>
+          </component>
           <component id="88e67" class="javax.swing.JButton" binding="btnUpdateRoom">
             <constraints/>
             <properties>
@@ -122,7 +138,7 @@
               <text value="Update"/>
             </properties>
           </component>
-          <component id="a698" class="javax.swing.JButton" binding="btnAddReservation">
+          <component id="f76a" class="javax.swing.JButton" binding="btnRemoveRoom">
             <constraints/>
             <properties>
               <actionCommand value="Add Reservation"/>
@@ -133,9 +149,9 @@
               <horizontalAlignment value="0"/>
               <horizontalTextPosition value="0"/>
               <inheritsPopupMenu value="false"/>
-              <label value="Add Reservation"/>
+              <label value="Remove"/>
               <preferredSize width="175" height="40"/>
-              <text value="Add Reservation"/>
+              <text value="Remove"/>
             </properties>
           </component>
         </children>
