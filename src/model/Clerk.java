@@ -1,10 +1,20 @@
 package model;
 
 public class Clerk {
+
+    private int clerkId;
     private String fullName;
     private String username;
     private String email;
     private String password;
+
+    public int getClerkId() {
+        return clerkId;
+    }
+
+    public void setClerkId(int clerkId) {
+        this.clerkId = clerkId;
+    }
 
     public String getFullName() {
         return fullName;
@@ -41,7 +51,8 @@ public class Clerk {
     @Override
     public String toString() {
         return "Clerk{" +
-                "fullName='" + fullName + '\'' +
+                "clerkId=" + clerkId +
+                ", fullName='" + fullName + '\'' +
                 ", username='" + username + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +

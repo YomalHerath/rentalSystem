@@ -129,7 +129,7 @@
         <properties>
           <background color="-1313285"/>
           <minimumSize width="0" height="0"/>
-          <preferredSize width="1280" height="380"/>
+          <preferredSize width="1280" height="400"/>
         </properties>
         <border type="none"/>
         <children>
@@ -137,7 +137,7 @@
             <constraints/>
             <properties>
               <font name="Fira Code" size="14" style="0"/>
-              <preferredSize width="1200" height="350"/>
+              <preferredSize width="1200" height="400"/>
             </properties>
             <border type="none"/>
             <children>
@@ -149,7 +149,7 @@
                   <enabled value="false"/>
                   <fillsViewportHeight value="false"/>
                   <font name="Fira Code" size="14" style="0"/>
-                  <preferredSize width="1280" height="350"/>
+                  <preferredSize width="1280" height="400"/>
                 </properties>
                 <clientProperties>
                   <Table.isFileList class="java.lang.Boolean" value="false"/>
