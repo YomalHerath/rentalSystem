@@ -12,15 +12,19 @@ public class AddMaintenance extends JDialog {
     private JLabel lblFillRoomNo;
     private JLabel lblRoomType;
     private JLabel lblFillRoomType;
-    private JLabel lblMaintenanceDate;
-    private JTextField tFieldMDate;
-    private JLabel lblMaintenanceTime;
-    private JTextField tFieldMTime;
     private JButton btnSave;
     private JButton btnCancel;
     private JPanel AddMaintenancePanel;
     private JLabel lblMaintenanceNote;
-    private JTextArea textAreaNote;
+    private JLabel lblOccation;
+    private JComboBox comboBoxOccation;
+    private JLabel lblReservedDate;
+    private JTextField tFiieldFromDate;
+    private JTextField tFieldRToDate;
+    private JLabel lblReservedTime;
+    private JSpinner spinnerTime;
+    private JComboBox comboBoxTimeSelect;
+    private JComboBox comboBoxNote;
 
     public AddMaintenance(JFrame jFrame){
         super(jFrame);

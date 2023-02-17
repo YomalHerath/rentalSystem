@@ -13,22 +13,26 @@ public class UpdateMaintenance extends JDialog {
     private JLabel lblFillRoomNo;
     private JLabel lblRoomType;
     private JLabel lblFillRoomType;
-    private JLabel lblMaintenanceDate;
-    private JTextField tFieldMDate;
-    private JLabel lblMaintenanceTime;
-    private JTextField tFieldMTime;
     private JButton btnUpdate;
     private JButton btnCancel;
     private JComboBox comboBoxStatus;
-    private JTextArea textAreaNote;
-    private JLabel lblMNote;
+    private JLabel lblOccation;
+    private JComboBox comboBoxOccation;
+    private JLabel lblReservedDate;
+    private JTextField tFiieldFromDate;
+    private JTextField tFieldRToDate;
+    private JLabel lblReservedTime;
+    private JSpinner spinnerTime;
+    private JComboBox comboBoxTimeSelect;
+    private JLabel lblMaintenanceNote;
+    private JComboBox comboBoxNote;
 
     public UpdateMaintenance(JFrame jFrame){
         super(jFrame);
         setTitle("Room Rental System");
         setContentPane(UpdateMaintenancePanel);
         //set minimum size for dialog
-        setMinimumSize(new Dimension(400,600));
+        setMinimumSize(new Dimension(400,620));
         setModal(true);
         //display dialog in the middle of the frame
         setLocationRelativeTo(jFrame);
