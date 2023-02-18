@@ -9,6 +9,7 @@ public class DBConnection {
     static String pass = "";
 
 
+    //open connection
     public static Connection getConnection() throws Exception{
         if(con == null){
             Class.forName(driver);
