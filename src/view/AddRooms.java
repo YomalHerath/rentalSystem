@@ -1,9 +1,16 @@
 package view;
 
+import controller.ClerkImplement;
+import controller.RoomImplement;
+import model.Clerk;
+import model.Room;
+
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class AddRooms extends JDialog {
+public class AddRooms extends JFrame {
     private JPanel AddRoomDetailsPanel;
     private JPanel JPanel1;
     private JPanel JPanel2;
@@ -15,23 +22,51 @@ public class AddRooms extends JDialog {
     private JButton btnSave;
     private JComboBox comboBoxRoomType;
     private JButton btnCancel;
-    private JComboBox comboBoxRoomSize;
+    private JSpinner spinnerRoomSize;
 
-    public AddRooms(JFrame jFrame){
-        super(jFrame);
+    public AddRooms(){
+        super();
         setTitle("Room Rental System");
         setContentPane(AddRoomDetailsPanel);
         //set minimum size for dialog
         setMinimumSize(new Dimension(400,450));
-        setModal(true);
         //display dialog in the middle of the frame
-        setLocationRelativeTo(jFrame);
+        setLocationRelativeTo(AddRoomDetailsPanel);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setResizable(false);
         setVisible(true);
 
+        btnSave.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                Room room = new Room();
+                String roomNo = tFieldRoomNo.getText().trim();
+                String roomType = comboBoxRoomType.getSelectedItem().toString();
+                int roomSize = (Integer) spinnerRoomSize.getValue();
+
+                //set text
+                room.setRoomNo(roomNo);
+                room.setRoomType(roomType);
+                room.setRoomSize(roomSize);
+
+                RoomImplement roomImplement = new RoomImplement();
+                roomImplement.save(room);
+            }
+        });
+        btnCancel.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+            }
+        });
     }
 
+    public Room room;
+
     public static void main(String[] args) {
-        AddRooms addRoomDetails = new AddRooms(null);
+        AddRooms addRoomDetails = new AddRooms();
+        Room room = addRoomDetails.room;
     }
 
 }

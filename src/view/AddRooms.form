@@ -101,6 +101,11 @@
                     <constraints border-constraint="Center"/>
                     <properties>
                       <font name="Fira Code" size="14" style="0"/>
+                      <model>
+                        <item value="Computer Lab"/>
+                        <item value="Tutorial Room"/>
+                        <item value="Lecture Theatre"/>
+                      </model>
                     </properties>
                   </component>
                 </children>
@@ -122,11 +127,9 @@
                       <text value="Room Size"/>
                     </properties>
                   </component>
-                  <component id="1d73b" class="javax.swing.JComboBox" binding="comboBoxRoomSize">
+                  <component id="aade" class="javax.swing.JSpinner" binding="spinnerRoomSize">
                     <constraints border-constraint="Center"/>
-                    <properties>
-                      <font name="Fira Code" size="14" style="0"/>
-                    </properties>
+                    <properties/>
                   </component>
                 </children>
               </grid>
