@@ -88,6 +88,7 @@ public class ClerkImplement implements ClerkInterface {
             PreparedStatement preparedStatement = con.prepareStatement(sql);
             ResultSet resultSet = preparedStatement.executeQuery();
 
+            //data will be added until finish
             while(resultSet.next()){
                 Clerk clerk = new Clerk();
                 clerk.setClerkId(resultSet.getInt("clerkId"));

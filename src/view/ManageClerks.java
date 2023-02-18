@@ -33,12 +33,15 @@ public class ManageClerks extends JFrame {
         setMinimumSize(new Dimension(1280,720));
         //display dialog in the middle of the frame
         setLocationRelativeTo(ManageClerksPanel);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setResizable(false);
         setVisible(true);
     }
 
     public void Load()
     {
         ClerkImplement clerkImplement = new ClerkImplement();
+        //store data into jtable
         List<Clerk> list = clerkImplement.list();
         DefaultTableModel defaultTableModel = (DefaultTableModel) tableClerksDetails.getModel();
         defaultTableModel.setRowCount(0);
@@ -58,4 +61,5 @@ public class ManageClerks extends JFrame {
         ManageClerks manageClerks = new ManageClerks();
         manageClerks.Load();
     }
+
 }
