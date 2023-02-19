@@ -8,6 +8,7 @@ public class Clerk {
     private String email;
     private String password;
 
+    //Getters and Setters
     public int getClerkId() {
         return clerkId;
     }

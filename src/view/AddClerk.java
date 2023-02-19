@@ -27,7 +27,7 @@ public class AddClerk extends JFrame {
     private JPasswordField tFieldPassword;
     private JPasswordField tFieldCPassword;
 
-    // password uppercase and lower case letter validation
+    // password uppercase and lowercase letter validation
     private static boolean containsUppercaseAndLowercase(String str) {
         boolean hasUppercase = false;
         boolean hasLowercase = false;
@@ -46,19 +46,24 @@ public class AddClerk extends JFrame {
         return false;
     }
 
-    public AddClerk(){
+    //add view of frame
+    public AddClerk() {
         setTitle("Room Rental System");
         setContentPane(AddClerkPanel);
         //set minimum size for dialog
-        setMinimumSize(new Dimension(400,550));
+        setMinimumSize(new Dimension(400, 550));
         //display dialog in the middle of the frame
         setLocationRelativeTo(AddClerkPanel);
         setVisible(true);
 
+        //save function with btn click
         btnSave.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                // create clerk object from model class
                 Clerk clerk = new Clerk();
+
+                //get text field values
                 String fullName = tFieldFullName.getText().trim();
                 String username = tFieldUsername.getText().trim();
                 String email = tFieldEmail.getText().trim();
@@ -72,28 +77,29 @@ public class AddClerk extends JFrame {
                 // requires the username can contain only letters
                 String usernamePattern = "^[a-zA-Z]$";
 
-                //validate text fields
-                if (fullName.isEmpty()){
+                //validate all form text fields
+                if (fullName.isEmpty()) {
                     JOptionPane.showMessageDialog(tFieldFullName, "Enter Full Name", "Error", JOptionPane.ERROR_MESSAGE);
-                } else if (username.isEmpty()){
+                } else if (username.isEmpty()) {
                     JOptionPane.showMessageDialog(tFieldUsername, "Enter Username", "Error", JOptionPane.ERROR_MESSAGE);
-                } else if (email.isEmpty()){
+                } else if (email.isEmpty()) {
                     JOptionPane.showMessageDialog(tFieldEmail, "Enter Email", "Error", JOptionPane.ERROR_MESSAGE);
-                } else if (password.isEmpty()){
+                } else if (password.isEmpty()) {
                     JOptionPane.showMessageDialog(tFieldPassword, "Enter Password", "Error", JOptionPane.ERROR_MESSAGE);
-                } else if (cpassword.isEmpty()){
+                } else if (cpassword.isEmpty()) {
                     JOptionPane.showMessageDialog(tFieldCPassword, "Enter Confirm Password", "Error", JOptionPane.ERROR_MESSAGE);
-                } else if (username.matches(usernamePattern)){
+                } else if (username.matches(usernamePattern)) {
                     JOptionPane.showMessageDialog(tFieldUsername, "Username must have a minimum length of 3 characters " +
                                     "and a maximum length of 20 characters, and can contain only letters",
                             "Error", JOptionPane.ERROR_MESSAGE);
-                } else if (email.matches(emailPattern)){
+                } else if (email.matches(emailPattern)) {
                     JOptionPane.showMessageDialog(tFieldEmail, "Invalid Email Format", "Error", JOptionPane.ERROR_MESSAGE);
-                } if (password.length() < 6) {
+                }
+                if (password.length() < 6) {
                     JOptionPane.showMessageDialog(tFieldEmail, "Password must be at least 6 characters long", "Error", JOptionPane.ERROR_MESSAGE);
                 } else if (!containsUppercaseAndLowercase(password)) {
                     JOptionPane.showMessageDialog(tFieldEmail, "Password must contain at least one uppercase letter and lowercase letter", "Error", JOptionPane.ERROR_MESSAGE);
-                } else if (!password.matches(cpassword)){
+                } else if (!password.matches(cpassword)) {
                     JOptionPane.showMessageDialog(tFieldPassword, "Passwords don't match", "Error", JOptionPane.ERROR_MESSAGE);
                 } else {
                     //set text
@@ -102,28 +108,29 @@ public class AddClerk extends JFrame {
                     clerk.setUsername(username);
                     clerk.setPassword(password);
 
+                    // Pass data for controller to add them to the database
+                    ClerkImplement clerkImplement = new ClerkImplement();
+                    clerkImplement.save(clerk);
 
-                    // Create a new thread to handle the database operation
-                    new Thread(() -> {
+                    //set text field null
+                    tFieldFullName.setText("");
+                    tFieldEmail.setText("");
+                    tFieldUsername.setText("");
+                    tFieldPassword.setText("");
+                    tFieldCPassword.setText("");
+                    tFieldFullName.requestFocus();
 
-                        // Pass data for controller to add them to the database
-                        ClerkImplement clerkImplement = new ClerkImplement();
-                        clerkImplement.save(clerk);
-                        tFieldFullName.setText("");
-                        tFieldEmail.setText("");
-                        tFieldUsername.setText("");
-                        tFieldPassword.setText("");
-                        tFieldCPassword.setText("");
-                        tFieldFullName.requestFocus();
-                        ManageClerks manageClerks = new ManageClerks();
-                        manageClerks.Load();
-                        dispose();
-
-                    }).start();
+                    //call manage clerk view page
+                    ManageClerks manageClerks = new ManageClerks();
+                    manageClerks.Load();
+                    //close form view
+                    dispose();
 
                 }
             }
         });
+
+        // cancel btn click function
         btnCancel.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -132,6 +139,7 @@ public class AddClerk extends JFrame {
         });
     }
 
+    // create clerk object in public
     public Clerk clerk;
 
     public static void main(String[] args) {

@@ -15,18 +15,18 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.table.JTableHeader;
 
 public class ManageClerks extends JFrame {
     private JPanel ManageClerksPanel;
     private JPanel JPanel2;
     private JLabel lblManageClerks;
     private JButton btnAddClerks;
-    private JTextField tFieldClerksSearch;
-    private JButton btnClerksSearch;
     private JTextField tFieldClerksId;
     private JButton btnUpdateClerks;
     private JTable tableClerksDetails;
 
+    //add view of frame
     public ManageClerks() {
         super();
         setTitle("Room Rental System");
@@ -37,6 +37,8 @@ public class ManageClerks extends JFrame {
         setLocationRelativeTo(ManageClerksPanel);
         setResizable(false);
         setVisible(true);
+
+        //update btn function call
         btnUpdateClerks.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -54,6 +56,8 @@ public class ManageClerks extends JFrame {
                 }
             }
         });
+
+        //add btn function call
         btnAddClerks.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -62,39 +66,41 @@ public class ManageClerks extends JFrame {
         });
     }
 
+    //create a method for view data in table view
     public void Load() {
-        // Load the data in a separate thread
-        new Thread(() -> {
-            ClerkImplement clerkImplement = new ClerkImplement();
 
-            //define column Names
-            String[] columnNames = {"Clerk Id", "Full Name", "Username", "Email"};
+        //create clerk implementation object
+        ClerkImplement clerkImplement = new ClerkImplement();
+        //define column Names
+        String[] columnNames = {"Clerk Id", "Full Name", "Username", "Email"};
 
-            //store data into jTable
-            List<Clerk> list = clerkImplement.list();
-            DefaultTableModel defaultTableModel = (DefaultTableModel) tableClerksDetails.getModel();
-            defaultTableModel.setColumnIdentifiers(columnNames);
-            defaultTableModel.setRowCount(0);
+        //store data into jTable
+        List<Clerk> list = clerkImplement.list();
+        DefaultTableModel defaultTableModel = (DefaultTableModel) tableClerksDetails.getModel();
+        defaultTableModel.setColumnIdentifiers(columnNames);
+        defaultTableModel.setRowCount(0);
 
-            for (Clerk clerk : list) {
-                int clerkId = clerk.getClerkId();
-                String fullName = clerk.getFullName();
-                String username = clerk.getUsername();
-                String email = clerk.getEmail();
-                String password = clerk.getPassword();
-                defaultTableModel.addRow(new Object[]{clerkId, fullName, username, email, password});
-            }
-        }).start();
+        //add header color and font style in table
+        JTableHeader header = tableClerksDetails.getTableHeader();
+        header.setBackground(Color.BLUE);
+        header.setForeground(Color.WHITE);
+        Font font = new Font("Fira Code", Font.BOLD, 16);
+        header.setFont(font);
+
+        //fill table raws with database values by model class
+        for (Clerk clerk : list) {
+            int clerkId = clerk.getClerkId();
+            String fullName = clerk.getFullName();
+            String username = clerk.getUsername();
+            String email = clerk.getEmail();
+            String password = clerk.getPassword();
+            defaultTableModel.addRow(new Object[]{clerkId, fullName, username, email, password});
+        }
     }
 
     public static void main(String[] args) {
-
-        // Load the data in a separate thread
-        new Thread(() -> {
-            ManageClerks manageClerks = new ManageClerks();
-            manageClerks.Load();
-        }).start();
-
+        ManageClerks manageClerks = new ManageClerks();
+        manageClerks.Load();
     }
 
 }
