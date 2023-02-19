@@ -35,7 +35,6 @@ public class ManageClerks extends JFrame {
         setMinimumSize(new Dimension(1280,720));
         //display dialog in the middle of the frame
         setLocationRelativeTo(ManageClerksPanel);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
         setResizable(false);
         setVisible(true);
         btnUpdateClerks.addActionListener(new ActionListener() {
@@ -48,11 +47,16 @@ public class ManageClerks extends JFrame {
                 if (clerkId.isEmpty()){
                     JOptionPane.showMessageDialog(tFieldClerksId, "Enter Clerk Id", "Error", JOptionPane.ERROR_MESSAGE);
                 } else {
+                    //pass clerk id and view form
                     int passing_ClerkId = Integer.parseInt(clerkId);
                     UpdateClerk updateClerk = new UpdateClerk(passing_ClerkId);
-                    //view update form
-                    UpdateClerk uClerk = new UpdateClerk();
                 }
+            }
+        });
+        btnAddClerks.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                AddClerk addClerk = new AddClerk();
             }
         });
     }
@@ -82,8 +86,13 @@ public class ManageClerks extends JFrame {
     }
 
     public static void main(String[] args) {
-        ManageClerks manageClerks = new ManageClerks();
-        manageClerks.Load();
+
+        // Load the data in a separate thread
+        new Thread(() -> {
+            ManageClerks manageClerks = new ManageClerks();
+            manageClerks.Load();
+        }).start();
+
     }
 
 }

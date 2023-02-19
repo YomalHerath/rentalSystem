@@ -27,6 +27,25 @@ public class AddClerk extends JFrame {
     private JPasswordField tFieldPassword;
     private JPasswordField tFieldCPassword;
 
+    // password uppercase and lower case letter validation
+    private static boolean containsUppercaseAndLowercase(String str) {
+        boolean hasUppercase = false;
+        boolean hasLowercase = false;
+
+        for (int i = 0; i < str.length(); i++) {
+            if (Character.isUpperCase(str.charAt(i))) {
+                hasUppercase = true;
+            } else if (Character.isLowerCase(str.charAt(i))) {
+                hasLowercase = true;
+            }
+
+            if (hasUppercase && hasLowercase) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public AddClerk(){
         setTitle("Room Rental System");
         setContentPane(AddClerkPanel);
@@ -50,11 +69,8 @@ public class AddClerk extends JFrame {
                 String emailPattern = "^(?:(?![a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@" +
                         "(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}).)*$";
 
-                // requires the password to have at least one uppercase letter, one lowercase letter, one digit, one special character, and a minimum length of 8 characters
-                String passwordPattern = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$";
-
-                // requires the username to have a minimum length of 3 characters and a maximum length of 20 characters, and can contain only letters, digits, and underscores
-                String usernamePattern = "^[a-zA-Z]{3,20}$";
+                // requires the username can contain only letters
+                String usernamePattern = "^[a-zA-Z]$";
 
                 //validate text fields
                 if (fullName.isEmpty()){
@@ -73,10 +89,10 @@ public class AddClerk extends JFrame {
                             "Error", JOptionPane.ERROR_MESSAGE);
                 } else if (email.matches(emailPattern)){
                     JOptionPane.showMessageDialog(tFieldEmail, "Invalid Email Format", "Error", JOptionPane.ERROR_MESSAGE);
-                } else if (!password.matches(passwordPattern)){
-                    JOptionPane.showMessageDialog(tFieldPassword, "Password must have at least one uppercase letter, " +
-                            "one lowercase letter, one digit, one special character, and a minimum length of 8 characters",
-                            "Error", JOptionPane.ERROR_MESSAGE);
+                } if (password.length() < 6) {
+                    JOptionPane.showMessageDialog(tFieldEmail, "Password must be at least 6 characters long", "Error", JOptionPane.ERROR_MESSAGE);
+                } else if (!containsUppercaseAndLowercase(password)) {
+                    JOptionPane.showMessageDialog(tFieldEmail, "Password must contain at least one uppercase letter and lowercase letter", "Error", JOptionPane.ERROR_MESSAGE);
                 } else if (!password.matches(cpassword)){
                     JOptionPane.showMessageDialog(tFieldPassword, "Passwords don't match", "Error", JOptionPane.ERROR_MESSAGE);
                 } else {
@@ -86,14 +102,25 @@ public class AddClerk extends JFrame {
                     clerk.setUsername(username);
                     clerk.setPassword(password);
 
-                    ClerkImplement clerkImplement = new ClerkImplement();
-                    clerkImplement.save(clerk);
-                    tFieldFullName.setText("");
-                    tFieldEmail.setText("");
-                    tFieldUsername.setText("");
-                    tFieldPassword.setText("");
-                    tFieldCPassword.setText("");
-                    tFieldFullName.requestFocus();
+
+                    // Create a new thread to handle the database operation
+                    new Thread(() -> {
+
+                        // Pass data for controller to add them to the database
+                        ClerkImplement clerkImplement = new ClerkImplement();
+                        clerkImplement.save(clerk);
+                        tFieldFullName.setText("");
+                        tFieldEmail.setText("");
+                        tFieldUsername.setText("");
+                        tFieldPassword.setText("");
+                        tFieldCPassword.setText("");
+                        tFieldFullName.requestFocus();
+                        ManageClerks manageClerks = new ManageClerks();
+                        manageClerks.Load();
+                        dispose();
+
+                    }).start();
+
                 }
             }
         });

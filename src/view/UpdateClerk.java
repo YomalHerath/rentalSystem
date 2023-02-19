@@ -1,9 +1,14 @@
 package view;
 
+import controller.ClerkImplement;
+import model.Clerk;
+
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class UpdateClerk extends JDialog {
+public class UpdateClerk extends JFrame {
     private JPanel UpdateClerkPanel;
     private JPanel JPanel1;
     private JPanel JPanel2;
@@ -18,19 +23,59 @@ public class UpdateClerk extends JDialog {
     private JButton btnUpdate;
     private JButton btnCancel;
 
-    public UpdateClerk(JFrame jFrame){
-        super(jFrame);
+    public UpdateClerk(int clerkId){
+        super();
         setTitle("Room Rental System");
         setContentPane(UpdateClerkPanel);
         //set minimum size for dialog
         setMinimumSize(new Dimension(400,450));
-        setModal(true);
         //display dialog in the middle of the frame
-        setLocationRelativeTo(jFrame);
+        setLocationRelativeTo(UpdateClerkPanel);
+        setResizable(false);
         setVisible(true);
+
+
+        ClerkImplement clerkImplement = new ClerkImplement();
+        Clerk clerk = clerkImplement.get(clerkId);
+
+        //set database value to text fields
+        tFieldFullName.setText(clerk.getFullName());
+        tFieldEmail.setText(clerk.getEmail());
+        tFieldUsername.setText(clerk.getUsername());
+
+        btnCancel.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+            }
+        });
+        btnUpdate.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Clerk clerk = new Clerk();
+
+                String fullName = tFieldFullName.getText();
+                String username = tFieldUsername.getText();
+                String email = tFieldEmail.getText();
+
+                clerk.setFullName(fullName);
+                clerk.setUsername(username);
+                clerk.setEmail(email);
+                clerk.setClerkId(clerkId);
+
+                ClerkImplement clerkImplement = new ClerkImplement();
+                clerkImplement.update(clerk);
+                ManageClerks manageClerks = new ManageClerks();
+                manageClerks.Load();
+
+                tFieldFullName.setText("");
+                tFieldUsername.setText("");
+                tFieldEmail.setText("");
+            }
+        });
     }
 
     public static void main(String[] args) {
-        UpdateClerk updateClerk = new UpdateClerk(null);
+        UpdateClerk updateClerk = new UpdateClerk(5);
     }
 }

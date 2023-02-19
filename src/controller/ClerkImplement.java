@@ -40,7 +40,7 @@ public class ClerkImplement implements ClerkInterface {
         try {
 
             Connection con = DBConnection.getConnection();
-            String sql = "UPDATE students SET fullname=?,username=?,email=? WHERE clerkId=?";
+            String sql = "UPDATE clerk SET fullname=?,username=?,email=? WHERE clerkId=?";
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, clerk.getFullName());
             ps.setString(2, clerk.getUsername());
@@ -64,12 +64,10 @@ public class ClerkImplement implements ClerkInterface {
             preparedStatement.setInt(1, clerkId);
             ResultSet resultSet = preparedStatement.executeQuery();
             if(resultSet.next()){
-
                 clerk.setClerkId(resultSet.getInt("clerkId"));
                 clerk.setFullName(resultSet.getString("fullName"));
                 clerk.setUsername(resultSet.getString("username"));
                 clerk.setEmail(resultSet.getString("email"));
-                clerk.setPassword(resultSet.getString("password"));
             }
 
         } catch (Exception e) {
