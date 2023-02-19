@@ -45,13 +45,24 @@ public class AddRooms extends JFrame {
                 String roomType = comboBoxRoomType.getSelectedItem().toString();
                 int roomSize = (Integer) spinnerRoomSize.getValue();
 
-                //set text
-                room.setRoomNo(roomNo);
-                room.setRoomType(roomType);
-                room.setRoomSize(roomSize);
+                // validate form fields
+                if (roomNo.isEmpty()){
+                    JOptionPane.showMessageDialog(tFieldRoomNo, "Enter Room No", "Error", JOptionPane.ERROR_MESSAGE);
+                } else if (roomSize < 0) {
+                    JOptionPane.showMessageDialog(null, "Please enter a value more than 0");
+                    spinnerRoomSize.setValue(0);
+                } else {
+                    //set text
+                    room.setRoomNo(roomNo);
+                    room.setRoomType(roomType);
+                    room.setRoomSize(roomSize);
 
-                RoomImplement roomImplement = new RoomImplement();
-                roomImplement.save(room);
+                    RoomImplement roomImplement = new RoomImplement();
+                    roomImplement.save(room);
+                    tFieldRoomNo.setText("");
+                    spinnerRoomSize.setValue(0);
+                }
+
             }
         });
         btnCancel.addActionListener(new ActionListener() {

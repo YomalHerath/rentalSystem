@@ -137,7 +137,7 @@
             <constraints/>
             <properties>
               <font name="Fira Code" size="14" style="0"/>
-              <preferredSize width="1200" height="400"/>
+              <preferredSize width="1200" height="450"/>
             </properties>
             <border type="none"/>
             <children>
@@ -149,7 +149,8 @@
                   <enabled value="false"/>
                   <fillsViewportHeight value="false"/>
                   <font name="Fira Code" size="14" style="0"/>
-                  <preferredSize width="1280" height="400"/>
+                  <preferredScrollableViewportSize width="450" height="380"/>
+                  <preferredSize width="1280" height="380"/>
                 </properties>
                 <clientProperties>
                   <Table.isFileList class="java.lang.Boolean" value="false"/>

@@ -6,6 +6,8 @@ public class Room {
     private String roomNo;
     private String roomType;
     private int roomSize;
+    private String roomAvailability;
+    private String roomStatus;
 
     public int getRoomId() {
         return roomId;
@@ -39,6 +41,22 @@ public class Room {
         this.roomSize = roomSize;
     }
 
+    public String getRoomAvailability() {
+        return roomAvailability;
+    }
+
+    public void setRoomAvailability(String roomAvailability) {
+        this.roomAvailability = roomAvailability;
+    }
+
+    public String getRoomStatus() {
+        return roomStatus;
+    }
+
+    public void setRoomStatus(String roomStatus) {
+        this.roomStatus = roomStatus;
+    }
+
     @Override
     public String toString() {
         return "Room{" +
@@ -46,6 +64,8 @@ public class Room {
                 ", roomNo='" + roomNo + '\'' +
                 ", roomType='" + roomType + '\'' +
                 ", roomSize=" + roomSize +
+                ", roomAvailability='" + roomAvailability + '\'' +
+                ", roomStatus='" + roomStatus + '\'' +
                 '}';
     }
 }

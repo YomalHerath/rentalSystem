@@ -129,7 +129,10 @@
                   </component>
                   <component id="aade" class="javax.swing.JSpinner" binding="spinnerRoomSize">
                     <constraints border-constraint="Center"/>
-                    <properties/>
+                    <properties>
+                      <background color="-1"/>
+                      <font name="Fira Code" size="14" style="0"/>
+                    </properties>
                   </component>
                 </children>
               </grid>

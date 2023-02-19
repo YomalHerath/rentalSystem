@@ -7,6 +7,8 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -36,15 +38,37 @@ public class ManageClerks extends JFrame {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setResizable(false);
         setVisible(true);
+        btnUpdateClerks.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //pass clerk id to update form
+                String clerkId = tFieldClerksId .getText().trim();
+
+                //validate field
+                if (clerkId.isEmpty()){
+                    JOptionPane.showMessageDialog(tFieldClerksId, "Enter Clerk Id", "Error", JOptionPane.ERROR_MESSAGE);
+                } else {
+                    int passing_ClerkId = Integer.parseInt(clerkId);
+                    UpdateClerk updateClerk = new UpdateClerk(passing_ClerkId);
+                    //view update form
+                    UpdateClerk uClerk = new UpdateClerk();
+                }
+            }
+        });
     }
 
     public void Load()
     {
         ClerkImplement clerkImplement = new ClerkImplement();
-        //store data into jtable
+
+        String[] columnNames = {"Clerk Id", "Full Name", "Username", "Email"};
+
+        //store data into jTable
         List<Clerk> list = clerkImplement.list();
         DefaultTableModel defaultTableModel = (DefaultTableModel) tableClerksDetails.getModel();
+        defaultTableModel.setColumnIdentifiers(columnNames);
         defaultTableModel.setRowCount(0);
+
         for(Clerk clerk: list)
         {
             int clerkId = clerk.getClerkId();

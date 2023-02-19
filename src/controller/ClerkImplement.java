@@ -95,7 +95,6 @@ public class ClerkImplement implements ClerkInterface {
                 clerk.setFullName(resultSet.getString("fullName"));
                 clerk.setUsername(resultSet.getString("username"));
                 clerk.setEmail(resultSet.getString("email"));
-                clerk.setPassword(resultSet.getString("password"));
                 list.add(clerk);
             }
 
