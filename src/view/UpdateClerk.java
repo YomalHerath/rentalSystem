@@ -28,7 +28,7 @@ public class UpdateClerk extends JFrame {
         setTitle("Room Rental System");
         setContentPane(UpdateClerkPanel);
         //set minimum size for dialog
-        setMinimumSize(new Dimension(400,450));
+        setMinimumSize(new Dimension(400,500));
         //display dialog in the middle of the frame
         setLocationRelativeTo(UpdateClerkPanel);
         setResizable(false);
@@ -63,19 +63,19 @@ public class UpdateClerk extends JFrame {
                 clerk.setEmail(email);
                 clerk.setClerkId(clerkId);
 
-                ClerkImplement clerkImplement = new ClerkImplement();
-                clerkImplement.update(clerk);
-                ManageClerks manageClerks = new ManageClerks();
-                manageClerks.Load();
+                // Load the data in a separate thread
+                new Thread(() -> {
+                    ClerkImplement clerkImplement = new ClerkImplement();
+                    clerkImplement.update(clerk);
+                    ManageClerks manageClerks = new ManageClerks();
+                    manageClerks.Load();
+                    dispose();
+                }).start();
 
-                tFieldFullName.setText("");
-                tFieldUsername.setText("");
-                tFieldEmail.setText("");
             }
         });
     }
 
     public static void main(String[] args) {
-        UpdateClerk updateClerk = new UpdateClerk(5);
     }
 }
