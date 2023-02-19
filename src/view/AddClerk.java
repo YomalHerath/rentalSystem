@@ -46,7 +46,7 @@ public class AddClerk extends JFrame {
         return false;
     }
 
-    //add view of frame
+    //setup view of frame
     public AddClerk() {
         setTitle("Room Rental System");
         setContentPane(AddClerkPanel);
@@ -54,6 +54,8 @@ public class AddClerk extends JFrame {
         setMinimumSize(new Dimension(400, 550));
         //display dialog in the middle of the frame
         setLocationRelativeTo(AddClerkPanel);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setResizable(false);
         setVisible(true);
 
         //save function with btn click
@@ -135,6 +137,8 @@ public class AddClerk extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 dispose();
+                ManageClerks manageClerks = new ManageClerks();
+                manageClerks.Load();
             }
         });
     }

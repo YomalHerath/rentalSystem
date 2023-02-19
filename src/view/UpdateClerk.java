@@ -23,12 +23,12 @@ public class UpdateClerk extends JFrame {
     private JButton btnUpdate;
     private JButton btnCancel;
 
-    public UpdateClerk(int clerkId){
+    public UpdateClerk(int clerkId) {
         super();
         setTitle("Room Rental System");
         setContentPane(UpdateClerkPanel);
         //set minimum size for dialog
-        setMinimumSize(new Dimension(400,500));
+        setMinimumSize(new Dimension(400, 500));
         //display dialog in the middle of the frame
         setLocationRelativeTo(UpdateClerkPanel);
         setResizable(false);
@@ -47,6 +47,8 @@ public class UpdateClerk extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 dispose();
+                ManageClerks manageClerks = new ManageClerks();
+                manageClerks.Load();
             }
         });
         btnUpdate.addActionListener(new ActionListener() {
@@ -63,15 +65,11 @@ public class UpdateClerk extends JFrame {
                 clerk.setEmail(email);
                 clerk.setClerkId(clerkId);
 
-                // Load the data in a separate thread
-                new Thread(() -> {
-                    ClerkImplement clerkImplement = new ClerkImplement();
-                    clerkImplement.update(clerk);
-                    ManageClerks manageClerks = new ManageClerks();
-                    manageClerks.Load();
-                    dispose();
-                }).start();
-
+                ClerkImplement clerkImplement = new ClerkImplement();
+                clerkImplement.update(clerk);
+                ManageClerks manageClerks = new ManageClerks();
+                manageClerks.Load();
+                dispose();
             }
         });
     }

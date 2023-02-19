@@ -26,7 +26,7 @@ public class ManageClerks extends JFrame {
     private JButton btnUpdateClerks;
     private JTable tableClerksDetails;
 
-    //add view of frame
+    //setup view of frame
     public ManageClerks() {
         super();
         setTitle("Room Rental System");
@@ -35,6 +35,7 @@ public class ManageClerks extends JFrame {
         setMinimumSize(new Dimension(1280, 720));
         //display dialog in the middle of the frame
         setLocationRelativeTo(ManageClerksPanel);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(false);
         setVisible(true);
 
@@ -62,6 +63,7 @@ public class ManageClerks extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 AddClerk addClerk = new AddClerk();
+                dispose();
             }
         });
     }
