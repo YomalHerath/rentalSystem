@@ -77,7 +77,7 @@ public class UpdateRooms extends JFrame {
                     RoomImplement roomImplement = new RoomImplement();
                     roomImplement.update(room);
                     ManageRooms manageRooms = new ManageRooms();
-//                    manageRooms.Load();
+                    manageRooms.Load();
                     dispose();
                 }
             }
@@ -87,6 +87,7 @@ public class UpdateRooms extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 dispose();
                 ManageRooms manageRooms = new ManageRooms();
+                manageRooms.Load();
             }
         });
     }
