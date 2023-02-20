@@ -1,6 +1,6 @@
 package view;
 
-import controller.ClerkImplement;
+import controller.clerk.ClerkImplement;
 import model.Clerk;
 
 import javax.swing.*;
@@ -51,7 +51,7 @@ public class AddClerk extends JFrame {
         setTitle("Room Rental System");
         setContentPane(AddClerkPanel);
         //set minimum size for dialog
-        setMinimumSize(new Dimension(400, 550));
+        setMinimumSize(new Dimension(400, 580));
         //display dialog in the middle of the frame
         setLocationRelativeTo(AddClerkPanel);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

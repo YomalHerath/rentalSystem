@@ -1,6 +1,6 @@
 package view;
 
-import controller.ClerkImplement;
+import controller.clerk.ClerkImplement;
 import model.Clerk;
 
 import javax.swing.*;
@@ -9,10 +9,6 @@ import java.awt.*;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.JTableHeader;

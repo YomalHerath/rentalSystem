@@ -66,7 +66,7 @@
                   <component id="df2c4" class="javax.swing.JLabel" binding="lblRoomNo">
                     <constraints border-constraint="North"/>
                     <properties>
-                      <font name="Fira Code" size="14" style="0"/>
+                      <font name="Fira Code" size="16" style="0"/>
                       <preferredSize width="350" height="18"/>
                       <text value="Room No"/>
                     </properties>
@@ -75,7 +75,7 @@
                     <constraints border-constraint="Center"/>
                     <properties>
                       <autoscrolls value="false"/>
-                      <font name="Fira Code" size="14" style="0"/>
+                      <font name="Fira Code" size="16" style="0"/>
                     </properties>
                   </component>
                 </children>
@@ -92,7 +92,7 @@
                   <component id="fa3bb" class="javax.swing.JLabel" binding="lblRoomType">
                     <constraints border-constraint="North"/>
                     <properties>
-                      <font name="Fira Code" size="14" style="0"/>
+                      <font name="Fira Code" size="16" style="0"/>
                       <preferredSize width="350" height="18"/>
                       <text value="Room Type"/>
                     </properties>
@@ -100,7 +100,7 @@
                   <component id="b8968" class="javax.swing.JComboBox" binding="comboBoxRoomType">
                     <constraints border-constraint="Center"/>
                     <properties>
-                      <font name="Fira Code" size="14" style="0"/>
+                      <font name="Fira Code" size="16" style="0"/>
                       <model>
                         <item value="Computer Lab"/>
                         <item value="Tutorial Room"/>
@@ -122,7 +122,7 @@
                   <component id="983e9" class="javax.swing.JLabel">
                     <constraints border-constraint="North"/>
                     <properties>
-                      <font name="Fira Code" size="14" style="0"/>
+                      <font name="Fira Code" size="16" style="0"/>
                       <preferredSize width="350" height="18"/>
                       <text value="Room Size"/>
                     </properties>
@@ -131,7 +131,7 @@
                     <constraints border-constraint="Center"/>
                     <properties>
                       <background color="-1"/>
-                      <font name="Fira Code" size="14" style="0"/>
+                      <font name="Fira Code" size="16" style="0"/>
                     </properties>
                   </component>
                 </children>
@@ -152,7 +152,7 @@
                   <alignmentX value="0.5"/>
                   <background color="-13728063"/>
                   <borderPainted value="false"/>
-                  <font name="Fira Code" size="14" style="1"/>
+                  <font name="Fira Code" size="16" style="1"/>
                   <foreground color="-1"/>
                   <preferredSize width="300" height="38"/>
                   <text value="Save"/>
@@ -165,7 +165,7 @@
                   <alignmentX value="0.5"/>
                   <background color="-13728063"/>
                   <borderPainted value="false"/>
-                  <font name="Fira Code" size="14" style="1"/>
+                  <font name="Fira Code" size="16" style="1"/>
                   <foreground color="-1"/>
                   <preferredSize width="300" height="38"/>
                   <text value="Cancel"/>

@@ -1,4 +1,4 @@
-package controller;
+package controller.clerk;
 
 import model.Clerk;
 

@@ -1,8 +1,6 @@
 package view;
 
-import controller.ClerkImplement;
-import controller.RoomImplement;
-import model.Clerk;
+import controller.room.RoomImplement;
 import model.Room;
 
 import javax.swing.*;
@@ -69,6 +67,7 @@ public class AddRooms extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 dispose();
+                ManageRooms manageRooms = new ManageRooms();
             }
         });
     }
