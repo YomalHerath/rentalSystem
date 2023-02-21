@@ -68,6 +68,16 @@ public class ManageRooms extends JFrame {
                 }
             }
         });
+        btnRemoveRoom.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Room room = new Room();
+                room.setRoomNo(tFieldRoomId.getText());
+                RoomImplement roomImplement = new RoomImplement();
+                roomImplement.delete(room);
+                Load();
+            }
+        });
     }
 
     //create a method for view data in table view
@@ -93,13 +103,12 @@ public class ManageRooms extends JFrame {
 
         //fill table raws with database values by model class
         for (Room room : list) {
-            int roomId = room.getRoomId();
             String roomNo = room.getRoomNo();
             String roomType = room.getRoomType();
             String roomSize = String.valueOf(room.getRoomSize());
             String availability = room.getRoomAvailability();
             String status = room.getRoomStatus();
-            defaultTableModel.addRow(new Object[]{roomId, roomNo, roomType, roomSize, availability, status});
+            defaultTableModel.addRow(new Object[]{roomNo, roomType, roomSize, availability, status});
         }
     }
 

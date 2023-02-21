@@ -51,6 +51,23 @@ public class RoomImplement implements RoomInterface {
     }
 
     @Override
+    public void delete(Room room) {
+        try {
+
+            Connection con = DBConnection.getConnection();
+            String sql = "delete from room  WHERE roomNo=?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, room.getRoomNo());
+            ps.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Deleted!");
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Error");
+
+        }
+    }
+
+    @Override
     public Room get(String roomNo) {
         Room room = new Room();
         try {
