@@ -1,9 +1,12 @@
 package view;
 
+import controller.room.RoomImplement;
+import model.Room;
+
 import javax.swing.*;
 import java.awt.*;
 
-public class AddReservation extends JDialog {
+public class AddReservation extends JFrame {
     private JPanel JPanel1;
     private JPanel JPanel2;
     private JLabel lblAddReservation;
@@ -30,16 +33,24 @@ public class AddReservation extends JDialog {
     private JComboBox comboBoxTimeSelect;
     private JTextField tFieldRToDate;
 
-    public AddReservation(JFrame jFrame){
-        super(jFrame);
+    public AddReservation(String roomNo){
+        super();
         setTitle("Room Rental System");
         setContentPane(AddReservationPanel);
         //set minimum size for dialog
         setMinimumSize(new Dimension(400,720));
-        setModal(true);
         //display dialog in the middle of the frame
-        setLocationRelativeTo(jFrame);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setResizable(false);
         setVisible(true);
+
+        // create object in Implement class
+        RoomImplement roomImplement = new RoomImplement();
+        //call get function for retrieve data
+        Room room = roomImplement.get(roomNo);
+
+        //set database value to text fields
+        lblFillRoomNo.setText(room.getRoomNo());
 
     }
 
