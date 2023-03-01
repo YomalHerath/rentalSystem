@@ -13,38 +13,41 @@ import javax.swing.JOptionPane;
 public class ClerkImplement {
 
     public void save(Clerk clerk) {
-        try {
-            Connection con =  DBConnection.getConnection();
-            String query = "INSERT INTO clerk(fullName,username,email,password) VALUES (?,?,?,?)";
-            PreparedStatement preparedStatement = con.prepareStatement(query);
-            preparedStatement.setString(1, clerk.getFullName());
-            preparedStatement.setString(2, clerk.getUsername());
-            preparedStatement.setString(3, clerk.getEmail());
-            preparedStatement.setString(4, clerk.getPassword());
-            preparedStatement.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Saved!");
-        } catch (Exception e) {
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Fail to insert clerk"+ e.getMessage());
-        }
+        new Thread(() -> {
+            try {
+                Connection con = DBConnection.getConnection();
+                String query = "INSERT INTO clerk(fullName,username,email,password) VALUES (?,?,?,?)";
+                PreparedStatement preparedStatement = con.prepareStatement(query);
+                preparedStatement.setString(1, clerk.getFullName());
+                preparedStatement.setString(2, clerk.getUsername());
+                preparedStatement.setString(3, clerk.getEmail());
+                preparedStatement.setString(4, clerk.getPassword());
+                preparedStatement.executeUpdate();
+                JOptionPane.showMessageDialog(null, "Saved!");
+            } catch (Exception e) {
+                e.printStackTrace();
+                JOptionPane.showMessageDialog(null, "Fail to insert clerk" + e.getMessage());
+            }
+        }).start();
     }
 
     public void update(Clerk clerk) {
-        try {
-
-            Connection con = DBConnection.getConnection();
-            String sql = "UPDATE clerk SET fullname=?,username=?,email=? WHERE clerkId=?";
-            PreparedStatement ps = con.prepareStatement(sql);
-            ps.setString(1, clerk.getFullName());
-            ps.setString(2, clerk.getUsername());
-            ps.setString(3, clerk.getEmail());
-            ps.setInt(4, clerk.getClerkId());
-            ps.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Updated!");
-        } catch (Exception e) {
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Fail to update clerk"+ e.getMessage());
-        }
+        new Thread(() -> {
+            try {
+                Connection con = DBConnection.getConnection();
+                String sql = "UPDATE clerk SET fullname=?,username=?,email=? WHERE clerkId=?";
+                PreparedStatement ps = con.prepareStatement(sql);
+                ps.setString(1, clerk.getFullName());
+                ps.setString(2, clerk.getUsername());
+                ps.setString(3, clerk.getEmail());
+                ps.setInt(4, clerk.getClerkId());
+                ps.executeUpdate();
+                JOptionPane.showMessageDialog(null, "Updated!");
+            } catch (Exception e) {
+                e.printStackTrace();
+                JOptionPane.showMessageDialog(null, "Fail to update clerk" + e.getMessage());
+            }
+        }).start();
     }
 
     public Clerk get(int clerkId) {

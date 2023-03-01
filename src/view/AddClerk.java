@@ -107,42 +107,53 @@ public class AddClerk extends JFrame {
                 } else if (!password.matches(cpassword)) {
                     JOptionPane.showMessageDialog(tFieldPassword, "Passwords don't match", "Error", JOptionPane.ERROR_MESSAGE);
                 } else {
-                    try{
-                        Connection con = DBConnection.getConnection();
-                        String check_email = "SELECT email From clerk WHERE email =?";
-                        PreparedStatement preparedStatement = con.prepareStatement(check_email);
-                        preparedStatement.setString(1,email);
-                        ResultSet resultSet = preparedStatement.executeQuery();
-                        if (resultSet.next()){ // check email id already taken
-                            JOptionPane.showMessageDialog(tFieldEmail, "Entered Email Address Already Taken", "Error", JOptionPane.ERROR_MESSAGE);
-                        } else {
-                            //set text
-                            clerk.setFullName(fullName);
-                            clerk.setEmail(email);
-                            clerk.setUsername(username);
-                            clerk.setPassword(password);
 
-                            // Pass data for controller to add them to the database
-                            ClerkImplement clerkImplement = new ClerkImplement();
-                            clerkImplement.save(clerk);
+                    Thread thread = new Thread(new Runnable() {
+                        public void run() {
+                            try {
+                                try {
+                                    Connection con = DBConnection.getConnection();
+                                    String check_email = "SELECT email From clerk WHERE email =?";
+                                    PreparedStatement preparedStatement = con.prepareStatement(check_email);
+                                    preparedStatement.setString(1, email);
+                                    ResultSet resultSet = preparedStatement.executeQuery();
+                                    if (resultSet.next()) { // check email id already taken
+                                        JOptionPane.showMessageDialog(tFieldEmail, "Entered Email Address Already Taken", "Error", JOptionPane.ERROR_MESSAGE);
+                                    } else {
+                                        //set text
+                                        clerk.setFullName(fullName);
+                                        clerk.setEmail(email);
+                                        clerk.setUsername(username);
+                                        clerk.setPassword(password);
 
-                            //set text field null
-                            tFieldFullName.setText("");
-                            tFieldEmail.setText("");
-                            tFieldUsername.setText("");
-                            tFieldPassword.setText("");
-                            tFieldCPassword.setText("");
-                            tFieldFullName.requestFocus();
+                                        // Pass data for controller to add them to the database
+                                        ClerkImplement clerkImplement = new ClerkImplement();
+                                        clerkImplement.save(clerk);
 
-                            //call manage clerk view page
-                            ManageClerks manageClerks = new ManageClerks();
-                            manageClerks.Load();
-                            //close form view
-                            dispose();
+                                        //set text field null
+                                        tFieldFullName.setText("");
+                                        tFieldEmail.setText("");
+                                        tFieldUsername.setText("");
+                                        tFieldPassword.setText("");
+                                        tFieldCPassword.setText("");
+                                        tFieldFullName.requestFocus();
+
+                                        //call manage clerk view page
+                                        ManageClerks manageClerks = new ManageClerks();
+                                        manageClerks.Load();
+                                        //close form view
+                                        dispose();
+                                    }
+                                } catch (Exception exception) {
+                                    exception.printStackTrace();
+                                }
+                            } catch (Exception ex) {
+                                JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+                            }
                         }
-                    } catch (Exception exception){
-                        exception.printStackTrace();
-                    }
+                    });
+                    // Start the process in a separate thread
+                    thread.start();
                 }
             }
         });
