@@ -1,12 +1,16 @@
 package view;
 
 import controller.clerk.ClerkImplement;
+import database.DBConnection;
 import model.Clerk;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 public class AddClerk extends JFrame {
     private JPanel JPanel1;
@@ -96,38 +100,49 @@ public class AddClerk extends JFrame {
                             "Error", JOptionPane.ERROR_MESSAGE);
                 } else if (email.matches(emailPattern)) {
                     JOptionPane.showMessageDialog(tFieldEmail, "Invalid Email Format", "Error", JOptionPane.ERROR_MESSAGE);
-                }
-                if (password.length() < 6) {
+                } else if (password.length() < 6) {
                     JOptionPane.showMessageDialog(tFieldEmail, "Password must be at least 6 characters long", "Error", JOptionPane.ERROR_MESSAGE);
                 } else if (!containsUppercaseAndLowercase(password)) {
                     JOptionPane.showMessageDialog(tFieldEmail, "Password must contain at least one uppercase letter and lowercase letter", "Error", JOptionPane.ERROR_MESSAGE);
                 } else if (!password.matches(cpassword)) {
                     JOptionPane.showMessageDialog(tFieldPassword, "Passwords don't match", "Error", JOptionPane.ERROR_MESSAGE);
                 } else {
-                    //set text
-                    clerk.setFullName(fullName);
-                    clerk.setEmail(email);
-                    clerk.setUsername(username);
-                    clerk.setPassword(password);
+                    try{
+                        Connection con = DBConnection.getConnection();
+                        String check_email = "SELECT email From clerk WHERE email =?";
+                        PreparedStatement preparedStatement = con.prepareStatement(check_email);
+                        preparedStatement.setString(1,email);
+                        ResultSet resultSet = preparedStatement.executeQuery();
+                        if (resultSet.next()){ // check email id already taken
+                            JOptionPane.showMessageDialog(tFieldEmail, "Entered Email Address Already Taken", "Error", JOptionPane.ERROR_MESSAGE);
+                        } else {
+                            //set text
+                            clerk.setFullName(fullName);
+                            clerk.setEmail(email);
+                            clerk.setUsername(username);
+                            clerk.setPassword(password);
 
-                    // Pass data for controller to add them to the database
-                    ClerkImplement clerkImplement = new ClerkImplement();
-                    clerkImplement.save(clerk);
+                            // Pass data for controller to add them to the database
+                            ClerkImplement clerkImplement = new ClerkImplement();
+                            clerkImplement.save(clerk);
 
-                    //set text field null
-                    tFieldFullName.setText("");
-                    tFieldEmail.setText("");
-                    tFieldUsername.setText("");
-                    tFieldPassword.setText("");
-                    tFieldCPassword.setText("");
-                    tFieldFullName.requestFocus();
+                            //set text field null
+                            tFieldFullName.setText("");
+                            tFieldEmail.setText("");
+                            tFieldUsername.setText("");
+                            tFieldPassword.setText("");
+                            tFieldCPassword.setText("");
+                            tFieldFullName.requestFocus();
 
-                    //call manage clerk view page
-                    ManageClerks manageClerks = new ManageClerks();
-                    manageClerks.Load();
-                    //close form view
-                    dispose();
-
+                            //call manage clerk view page
+                            ManageClerks manageClerks = new ManageClerks();
+                            manageClerks.Load();
+                            //close form view
+                            dispose();
+                        }
+                    } catch (Exception exception){
+                        exception.printStackTrace();
+                    }
                 }
             }
         });

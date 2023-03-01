@@ -10,9 +10,8 @@ import java.util.List;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
-public class ClerkImplement implements ClerkInterface {
+public class ClerkImplement {
 
-    @Override
     public void save(Clerk clerk) {
         try {
             Connection con =  DBConnection.getConnection();
@@ -26,11 +25,10 @@ public class ClerkImplement implements ClerkInterface {
             JOptionPane.showMessageDialog(null, "Saved!");
         } catch (Exception e) {
             e.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Error");
+            JOptionPane.showMessageDialog(null, "Fail to insert clerk"+ e.getMessage());
         }
     }
 
-    @Override
     public void update(Clerk clerk) {
         try {
 
@@ -45,11 +43,10 @@ public class ClerkImplement implements ClerkInterface {
             JOptionPane.showMessageDialog(null, "Updated!");
         } catch (Exception e) {
             e.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Error");
+            JOptionPane.showMessageDialog(null, "Fail to update clerk"+ e.getMessage());
         }
     }
 
-    @Override
     public Clerk get(int clerkId) {
         Clerk clerk = new Clerk();
         try {
@@ -72,12 +69,11 @@ public class ClerkImplement implements ClerkInterface {
         return clerk;
     }
 
-    @Override
     public List<Clerk> list() {
         List<Clerk> list = new ArrayList<Clerk>();
         try {
             Connection con = DBConnection.getConnection();
-            String sql = "SELECT * FROM clerk";
+            String sql = "SELECT * FROM clerk WHERE userType = 0";
             PreparedStatement preparedStatement = con.prepareStatement(sql);
             ResultSet resultSet = preparedStatement.executeQuery();
 

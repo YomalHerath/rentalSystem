@@ -7,6 +7,10 @@ public class Clerk {
     private String username;
     private String email;
     private String password;
+    private int clerkType;
+
+    public Clerk() {
+    }
 
     //Getters and Setters
     public int getClerkId() {
@@ -49,6 +53,23 @@ public class Clerk {
         this.password = password;
     }
 
+    public int getClerkType() {
+        return clerkType;
+    }
+
+    public void setClerkType(int clerkType) {
+        this.clerkType = clerkType;
+    }
+
+    public Clerk(int clerkId, String fullName, String username, String email, String password, int clerkType) {
+        this.clerkId = clerkId;
+        this.fullName = fullName;
+        this.username = username;
+        this.email = email;
+        this.password = password;
+        this.clerkType = clerkType;
+    }
+
     @Override
     public String toString() {
         return "Clerk{" +
@@ -57,6 +78,8 @@ public class Clerk {
                 ", username='" + username + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
+                ", clerkType=" + clerkType +
                 '}';
     }
+
 }
