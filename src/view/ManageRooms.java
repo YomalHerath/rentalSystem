@@ -4,6 +4,7 @@ import controller.room.RoomImplement;
 import model.Room;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 import java.awt.*;
@@ -23,6 +24,7 @@ public class ManageRooms extends JFrame {
     private JButton btnAddReservation;
     private JTextField tFieldRoomId;
     private JButton btnRemoveRoom;
+    private String[] data;
 
     // create heading for table with create table method
     void createTable() {
@@ -44,6 +46,7 @@ public class ManageRooms extends JFrame {
         setLocationRelativeTo(ManageRoomPanel);
         setResizable(false);
         setVisible(true);
+
         btnAddRoom.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -128,6 +131,7 @@ public class ManageRooms extends JFrame {
             String status = room.getRoomStatus();
             defaultTableModel.addRow(new Object[]{roomNo, roomType, roomSize, availability, status});
         }
+
     }
 
     public static void main(String[] args) {
