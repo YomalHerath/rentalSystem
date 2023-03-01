@@ -67,7 +67,7 @@
                   <component id="21235" class="javax.swing.JLabel" binding="lblEmail">
                     <constraints border-constraint="North"/>
                     <properties>
-                      <font name="Fira Code" size="14" style="0"/>
+                      <font name="Fira Code" size="16" style="0"/>
                       <preferredSize width="350" height="18"/>
                       <text value="Email Address"/>
                     </properties>
@@ -76,7 +76,7 @@
                     <constraints border-constraint="Center"/>
                     <properties>
                       <autoscrolls value="false"/>
-                      <font name="Fira Code" size="14" style="0"/>
+                      <font name="Fira Code" size="16" style="0"/>
                     </properties>
                   </component>
                 </children>
@@ -93,7 +93,7 @@
                   <component id="e1412" class="javax.swing.JLabel" binding="lblPassword">
                     <constraints border-constraint="North"/>
                     <properties>
-                      <font name="Fira Code" size="14" style="0"/>
+                      <font name="Fira Code" size="16" style="0"/>
                       <preferredSize width="350" height="18"/>
                       <text value="Password"/>
                     </properties>
@@ -102,7 +102,7 @@
                     <constraints border-constraint="Center"/>
                     <properties>
                       <autoscrolls value="false"/>
-                      <font name="Fira Code" size="14" style="0"/>
+                      <font name="Fira Code" size="16" style="0"/>
                     </properties>
                   </component>
                 </children>
@@ -116,10 +116,15 @@
                 </properties>
                 <border type="none"/>
                 <children>
-                  <component id="b09fa" class="javax.swing.JLabel">
+                  <component id="f60cd" class="javax.swing.JButton" binding="forgotPasswordButton" default-binding="true">
                     <constraints border-constraint="East"/>
                     <properties>
-                      <font name="Fira Code" size="14" style="0"/>
+                      <background color="-1313285"/>
+                      <borderPainted value="false"/>
+                      <contentAreaFilled value="false"/>
+                      <focusPainted value="true"/>
+                      <focusable value="true"/>
+                      <font name="Fira Code" size="16" style="0"/>
                       <text value="Forgot Password ?"/>
                     </properties>
                   </component>
@@ -141,7 +146,7 @@
                   <alignmentX value="0.5"/>
                   <background color="-13728063"/>
                   <borderPainted value="false"/>
-                  <font name="Fira Code" size="14" style="1"/>
+                  <font name="Fira Code" size="16" style="0"/>
                   <foreground color="-1"/>
                   <preferredSize width="300" height="38"/>
                   <text value="Sign In"/>
@@ -163,7 +168,7 @@
                   <alignmentX value="0.5"/>
                   <background color="-13728063"/>
                   <borderPainted value="false"/>
-                  <font name="Fira Code" size="14" style="1"/>
+                  <font name="Fira Code" size="16" style="0"/>
                   <foreground color="-1"/>
                   <preferredSize width="300" height="38"/>
                   <text value="Cancel"/>

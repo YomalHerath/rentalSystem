@@ -31,6 +31,27 @@ public class ManagerDashboard extends JFrame {
                 manageRooms.setVisible(true);
             }
         });
+        manageClerksButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ManageClerks manageClerks = new ManageClerks();
+                manageClerks.setVisible(true);
+            }
+        });
+        manageReservationsButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ManageReservation manageReservation = new ManageReservation(null);
+                manageReservation.setVisible(true);
+            }
+        });
+        manageMaintenanceButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ManageRoomMaintenance manageRoomMaintenance = new ManageRoomMaintenance(null);
+                manageRoomMaintenance.setVisible(true);
+            }
+        });
     }
 
     public void close(){
