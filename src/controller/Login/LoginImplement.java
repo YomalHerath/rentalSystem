@@ -13,7 +13,8 @@ import java.sql.ResultSet;
 import java.sql.SQLOutput;
 
 public class LoginImplement {
-    public Clerk LoginAuthenticate(String email, String password) {
+    private boolean loggedIn;
+    public boolean LoginAuthenticate(String email, String password) {
         Clerk clerk = new Clerk();
         try {
             //get connection
@@ -28,15 +29,21 @@ public class LoginImplement {
                 JOptionPane.showMessageDialog(null,"Login Successful!");
                 ManagerDashboard managerDashboard = new ManagerDashboard();
                 managerDashboard.setVisible(true);
+                return true;
             } else {
                 JOptionPane.showMessageDialog(null,"Invalid email or password, Try again!");
                 Login login = new Login();
                 login.setVisible(true);
+                return false;
             }
 
         } catch (Exception e) {
             e.printStackTrace();
+            loggedIn = false;
+            return false;
         }
-        return clerk;
+    }
+    public boolean isLoggedIn() {
+        return loggedIn;
     }
 }
