@@ -94,8 +94,6 @@ public class ManageReservation extends JFrame{
                 //validate text field
                 if (reservationId.isEmpty()){
                     JOptionPane.showMessageDialog(null, "Enter Reservation Id");
-                } else if (reservationId.equals("Enter Reservation Id")) {
-                    JOptionPane.showMessageDialog(null, "Enter Valid Reservation Id");
                 }
 
                 //validate field

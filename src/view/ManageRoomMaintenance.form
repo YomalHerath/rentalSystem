@@ -32,33 +32,6 @@
           </component>
         </children>
       </grid>
-      <grid id="faf78" layout-manager="FlowLayout" hgap="40" vgap="5" flow-align="0">
-        <constraints/>
-        <properties>
-          <background color="-1313285"/>
-          <minimumSize width="0" height="0"/>
-          <preferredSize width="1280" height="50"/>
-        </properties>
-        <border type="none"/>
-        <children>
-          <component id="5a732" class="javax.swing.JButton" binding="btnAddMaintenance">
-            <constraints/>
-            <properties>
-              <actionCommand value="Add New Maintenance"/>
-              <alignmentX value="0.5"/>
-              <background color="-13728063"/>
-              <font name="Fira Code" size="14" style="1"/>
-              <foreground color="-1"/>
-              <horizontalAlignment value="0"/>
-              <horizontalTextPosition value="0"/>
-              <inheritsPopupMenu value="false"/>
-              <label value="Add Maintenance"/>
-              <preferredSize width="175" height="40"/>
-              <text value="Add Maintenance"/>
-            </properties>
-          </component>
-        </children>
-      </grid>
       <grid id="a84b7" layout-manager="FlowLayout" hgap="40" vgap="5" flow-align="0">
         <constraints/>
         <properties>
@@ -151,7 +124,7 @@
                   <dropMode value="USE_SELECTION"/>
                   <enabled value="false"/>
                   <fillsViewportHeight value="false"/>
-                  <font name="Fira Code" size="14" style="0"/>
+                  <font name="Fira Code" size="16" style="0"/>
                   <preferredScrollableViewportSize width="450" height="400"/>
                   <preferredSize width="1280" height="400"/>
                 </properties>

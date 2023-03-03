@@ -13,7 +13,7 @@ import java.util.Date;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-public class AddMaintenance extends JDialog {
+public class AddMaintenance extends JFrame {
     private JPanel JPanel1;
     private JPanel JPanel2;
     private JLabel lblAddMaintenance;
@@ -36,7 +36,6 @@ public class AddMaintenance extends JDialog {
         setContentPane(AddMaintenancePanel);
         //set minimum size for dialog
         setMinimumSize(new Dimension(400,550));
-        setModal(true);
         //display dialog in the middle of the frame
         setLocationRelativeTo(AddMaintenancePanel);
         setVisible(true);
@@ -76,11 +75,11 @@ public class AddMaintenance extends JDialog {
                                 MaintenanceImplement maintenanceImplement = new MaintenanceImplement();
                                 maintenanceImplement.save(maintenance);
 
-                                //call manage view page
-                                ManageRoomMaintenance manageRoomMaintenance = new ManageRoomMaintenance(null);
-//                                manageRoomMaintenance.Load();
-                                //close form view
                                 dispose();
+                                //call manage view page
+                                ManageRoomMaintenance manageRoomMaintenance = new ManageRoomMaintenance();
+                                manageRoomMaintenance.Load();
+
 
                             } catch (Exception ex) {
                                 JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
@@ -89,6 +88,14 @@ public class AddMaintenance extends JDialog {
                     });
                     executor.shutdown();
                 }
+            }
+        });
+        btnCancel.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                ManageRooms manageRooms = new ManageRooms();
+                manageRooms.Load();
             }
         });
     }

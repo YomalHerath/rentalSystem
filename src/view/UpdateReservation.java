@@ -106,6 +106,14 @@ public class UpdateReservation extends JFrame {
 
             }
         });
+        btnCancel.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                ManageReservation manageReservation = new ManageReservation();
+                manageReservation.Load();
+            }
+        });
     }
 
     public static void main(String[] args) {

@@ -73,6 +73,7 @@ public class AddReservation extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 dispose();
                 ManageRooms manageRooms = new ManageRooms();
+                manageRooms.Load();
             }
         });
         btnSave.addActionListener(new ActionListener() {

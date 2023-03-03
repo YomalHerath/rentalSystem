@@ -80,7 +80,7 @@
             <properties>
               <font name="Fira Code" size="14" style="0"/>
               <preferredSize width="275" height="40"/>
-              <text value="Enter Reservation Id"/>
+              <text value=""/>
             </properties>
           </component>
           <component id="a1d93" class="javax.swing.JButton" binding="btnUpdateReservation">

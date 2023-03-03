@@ -2,18 +2,19 @@ package model;
 
 public class Maintenance {
 
-    private int Maintenance_id;
+    private String Maintenance_id;
     private String RoomNo;
     private String Occasion;
     private String StartDate;
     private String EndDate;
     private String Note;
+    private String status;
 
-    public int getMaintenance_id() {
+    public String getMaintenance_id() {
         return Maintenance_id;
     }
 
-    public void setMaintenance_id(int maintenance_id) {
+    public void setMaintenance_id(String maintenance_id) {
         Maintenance_id = maintenance_id;
     }
 
@@ -57,6 +58,14 @@ public class Maintenance {
         Note = note;
     }
 
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
     @Override
     public String toString() {
         return "Maintenance{" +
@@ -66,6 +75,7 @@ public class Maintenance {
                 ", StartDate='" + StartDate + '\'' +
                 ", EndDate='" + EndDate + '\'' +
                 ", Note='" + Note + '\'' +
+                ", status='" + status + '\'' +
                 '}';
     }
 }

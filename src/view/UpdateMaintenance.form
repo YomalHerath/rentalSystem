@@ -80,33 +80,6 @@
                   </component>
                 </children>
               </grid>
-              <grid id="87683" layout-manager="BorderLayout" hgap="5" vgap="0">
-                <constraints/>
-                <properties>
-                  <background color="-1313285"/>
-                  <font name="Fira Code" size="14" style="1"/>
-                  <preferredSize width="300" height="35"/>
-                </properties>
-                <border type="none"/>
-                <children>
-                  <component id="e7a81" class="javax.swing.JLabel" binding="lblRoomType">
-                    <constraints border-constraint="West"/>
-                    <properties>
-                      <font name="Fira Code" size="14" style="0"/>
-                      <preferredSize width="150" height="18"/>
-                      <text value="Room Type"/>
-                    </properties>
-                  </component>
-                  <component id="5cc09" class="javax.swing.JLabel" binding="lblFillRoomType">
-                    <constraints border-constraint="East"/>
-                    <properties>
-                      <font name="Fira Code" size="14" style="0"/>
-                      <preferredSize width="150" height="18"/>
-                      <text value=""/>
-                    </properties>
-                  </component>
-                </children>
-              </grid>
               <grid id="979ea" layout-manager="BorderLayout" hgap="5" vgap="0">
                 <constraints/>
                 <properties>
@@ -189,60 +162,6 @@
                   </component>
                 </children>
               </grid>
-              <grid id="177b3" layout-manager="BorderLayout" hgap="5" vgap="0">
-                <constraints/>
-                <properties>
-                  <background color="-1313285"/>
-                  <font name="Fira Code" size="14" style="1"/>
-                  <preferredSize width="150" height="50"/>
-                </properties>
-                <border type="none"/>
-                <children>
-                  <component id="14eff" class="javax.swing.JLabel" binding="lblReservedTime">
-                    <constraints border-constraint="North"/>
-                    <properties>
-                      <font name="Fira Code" size="14" style="0"/>
-                      <preferredSize width="350" height="18"/>
-                      <text value="Maintenance Time"/>
-                    </properties>
-                  </component>
-                  <component id="6a157" class="javax.swing.JSpinner" binding="spinnerTime">
-                    <constraints border-constraint="Center"/>
-                    <properties>
-                      <font name="Fira Code" size="14" style="0"/>
-                    </properties>
-                  </component>
-                </children>
-              </grid>
-              <grid id="845b0" layout-manager="BorderLayout" hgap="5" vgap="0">
-                <constraints/>
-                <properties>
-                  <background color="-1313285"/>
-                  <font name="Fira Code" size="14" style="1"/>
-                  <preferredSize width="150" height="50"/>
-                </properties>
-                <border type="none"/>
-                <children>
-                  <component id="185ac" class="javax.swing.JLabel">
-                    <constraints border-constraint="North"/>
-                    <properties>
-                      <font name="Fira Code" size="14" style="0"/>
-                      <preferredSize width="350" height="18"/>
-                      <text value=""/>
-                    </properties>
-                  </component>
-                  <component id="5d8e8" class="javax.swing.JComboBox" binding="comboBoxTimeSelect">
-                    <constraints border-constraint="Center"/>
-                    <properties>
-                      <font name="Fira Code" size="14" style="0"/>
-                      <model>
-                        <item value="AM"/>
-                        <item value="PM"/>
-                      </model>
-                    </properties>
-                  </component>
-                </children>
-              </grid>
               <grid id="97ae2" layout-manager="BorderLayout" hgap="5" vgap="0">
                 <constraints/>
                 <properties>
@@ -294,7 +213,7 @@
                     <properties>
                       <font name="Fira Code" size="14" style="0"/>
                       <model>
-                        <item value="InProgress"/>
+                        <item value="In Progress"/>
                         <item value="Completed"/>
                         <item value="Canceled"/>
                       </model>

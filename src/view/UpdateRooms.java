@@ -47,6 +47,7 @@ public class UpdateRooms extends JFrame {
         comboBoxAvailability.setSelectedItem(room.getRoomAvailability());
         comboBoxStatus.setSelectedItem(room.getRoomStatus());
         int id = room.getRoomId();
+
         btnUpdate.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
