@@ -125,8 +125,6 @@ public class AddReservation extends JFrame {
 
                                 // close the window and view manage reservation window
                                 dispose();
-                                ManageReservation manageReservation = new ManageReservation();
-                                manageReservation.setVisible(true);
 
 
                             } catch (Exception ex) {

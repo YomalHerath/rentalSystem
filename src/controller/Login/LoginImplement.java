@@ -2,6 +2,7 @@ package controller.Login;
 
 import database.DBConnection;
 import model.Clerk;
+import view.Clerk.ClerkDasboard;
 import view.Login;
 import view.Manager.ManagerDashboard;
 
@@ -32,8 +33,8 @@ public class LoginImplement {
                     return true;
                 } else {
                     JOptionPane.showMessageDialog(null,"Login Successful!");
-                    ManagerDashboard managerDashboard = new ManagerDashboard();
-                    managerDashboard.setVisible(true);
+                    ClerkDasboard clerkDashboard = new ClerkDasboard();
+                    clerkDashboard.setVisible(true);
                     return true;
                 }
 

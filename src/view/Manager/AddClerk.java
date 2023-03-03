@@ -122,9 +122,6 @@ public class AddClerk extends JFrame {
                                         tFieldCPassword.setText("");
                                         tFieldFullName.requestFocus();
 
-                                        //call manage clerk view page
-                                        ManageClerks manageClerks = new ManageClerks();
-                                        manageClerks.Load();
                                         //close form view
                                         dispose();
                                     }
@@ -146,8 +143,6 @@ public class AddClerk extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 dispose();
-                ManageClerks manageClerks = new ManageClerks();
-                manageClerks.Load();
             }
         });
     }

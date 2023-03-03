@@ -80,8 +80,6 @@ public class UpdateRooms extends JFrame {
 
                                 RoomImplement roomImplement = new RoomImplement();
                                 roomImplement.update(room);
-                                ManageRooms manageRooms = new ManageRooms();
-                                manageRooms.Load();
                                 dispose();
                             } catch (Exception e) {
                                 JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
@@ -97,8 +95,6 @@ public class UpdateRooms extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 dispose();
-                ManageRooms manageRooms = new ManageRooms();
-                manageRooms.Load();
             }
         });
     }

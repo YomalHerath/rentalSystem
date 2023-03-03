@@ -79,8 +79,6 @@ public class UpdateMaintenance extends JFrame {
                             MaintenanceImplement maintenanceImplement1 = new MaintenanceImplement();
                             maintenanceImplement1.update(maintenance);
 
-                            ManageRoomMaintenance manageRoomMaintenance = new ManageRoomMaintenance();
-                            manageRoomMaintenance.Load();
                             dispose();
 
                         } catch (Exception ex) {
@@ -95,8 +93,6 @@ public class UpdateMaintenance extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 dispose();
-                ManageRoomMaintenance manageRoomMaintenance = new ManageRoomMaintenance();
-                manageRoomMaintenance.Load();
             }
         });
     }

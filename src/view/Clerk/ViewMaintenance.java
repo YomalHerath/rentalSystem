@@ -1,65 +1,42 @@
-package view.Manager;
+package view.Clerk;
 
 import controller.Maintenance.MaintenanceImplement;
 import model.Maintenance;
+import view.Manager.ManageRoomMaintenance;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.List;
 
-public class ManageRoomMaintenance extends JFrame {
+public class ViewMaintenance extends JFrame {
     private JPanel ManageMaintenancePanel;
     private JPanel JPanel2;
     private JLabel lblManageMaintenance;
     private JTextField tFieldSearch;
     private JButton btnSearch;
-    private JTable tableReservationDetails;
     private JScrollPane tableMaintenanceDetails;
-    private JTextField tFieldMaintenanceId;
-    private JButton btnUpdateMaintenance;
-    private String[] data;
+    private JTable tableReservationDetails;
 
-    // create heading for table with create table method
-    void createTable() {
-        tableReservationDetails.setModel(new DefaultTableModel(
-                null,
-                new String[]{
-                        "Maintenance Id", "Room No", "Occasion", "Start Date", "End Date", "Note", "Status"
-                }
-        ));
-    }
-
-    public ManageRoomMaintenance(){
+    public ViewMaintenance() {
         super();
         setTitle("Room Rental System");
         setContentPane(ManageMaintenancePanel);
-        //set minimum size for dialog
-        setMinimumSize(new Dimension(1280,720));
-        //display dialog in the middle of the frame
+        setMinimumSize(new Dimension(1280, 720));
         setLocationRelativeTo(ManageMaintenancePanel);
         setResizable(false);
         setVisible(true);
-        btnUpdateMaintenance.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                //pass clerk id to update form
-                String mid = tFieldMaintenanceId.getText().trim();
+    }
 
-                //validate field
-                if (mid.isEmpty()) {
-                    JOptionPane.showMessageDialog(tFieldMaintenanceId, "Enter Maintenance Id", "Error", JOptionPane.ERROR_MESSAGE);
-                } else {
-                    //pass clerk id and view form
-                    String passing_mid = mid;
-                    UpdateMaintenance updateMaintenance = new UpdateMaintenance(passing_mid);
-                    dispose();
-                }
-            }
-        });
+    public static void main(String[] args) {
+        ViewMaintenance manageRoomMaintenance = new ViewMaintenance();
+        manageRoomMaintenance.Load();
+    }
+
+    // create heading for table with create table method
+    void createTable() {
+        tableReservationDetails.setModel(new DefaultTableModel(null, new String[]{"Maintenance Id", "Room No", "Occasion", "Start Date", "End Date", "Note", "Status"}));
     }
 
     //create a method for view data in table view
@@ -78,7 +55,7 @@ public class ManageRoomMaintenance extends JFrame {
 
         //add header color and font style in table
         JTableHeader header = tableReservationDetails.getTableHeader();
-        header.setBackground(Color.BLUE);
+        header.setBackground(Color.BLACK);
         header.setForeground(Color.WHITE);
         Font font = new Font("Fira Code", Font.BOLD, 16);
         header.setFont(font);
@@ -95,10 +72,5 @@ public class ManageRoomMaintenance extends JFrame {
             defaultTableModel.addRow(new Object[]{rId, roomNo, occasion, sDate, eDate, Note, Status});
         }
 
-    }
-
-    public static void main(String[] args) {
-        ManageRoomMaintenance manageRoomMaintenance = new ManageRoomMaintenance();
-        manageRoomMaintenance.Load();
     }
 }

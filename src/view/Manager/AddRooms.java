@@ -78,8 +78,6 @@ public class AddRooms extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 dispose();
-                ManageRooms manageRooms = new ManageRooms();
-                manageRooms.Load();
             }
         });
     }

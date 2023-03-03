@@ -47,8 +47,6 @@ public class UpdateClerk extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 dispose();
-                ManageClerks manageClerks = new ManageClerks();
-                manageClerks.Load();
             }
         });
         btnUpdate.addActionListener(new ActionListener() {
@@ -91,8 +89,6 @@ public class UpdateClerk extends JFrame {
 
                                 ClerkImplement clerkImplement = new ClerkImplement();
                                 clerkImplement.update(clerk);
-                                ManageClerks manageClerks = new ManageClerks();
-                                manageClerks.Load();
                                 dispose();
                             } catch (Exception e) {
                                 JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);

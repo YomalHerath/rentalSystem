@@ -73,9 +73,6 @@ public class AddMaintenance extends JFrame {
                                 maintenanceImplement.save(maintenance);
 
                                 dispose();
-                                //call manage view page
-                                ManageRoomMaintenance manageRoomMaintenance = new ManageRoomMaintenance();
-                                manageRoomMaintenance.Load();
 
 
                             } catch (Exception ex) {
@@ -91,8 +88,6 @@ public class AddMaintenance extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 dispose();
-                ManageRooms manageRooms = new ManageRooms();
-                manageRooms.Load();
             }
         });
     }

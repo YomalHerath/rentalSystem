@@ -93,8 +93,6 @@ public class UpdateReservation extends JFrame {
 
                             ReservationImplement reservationImplement1 = new ReservationImplement();
                             reservationImplement.update(reservation);
-                            ManageReservation manageReservation = new ManageReservation();
-                            manageReservation.Load();
                             dispose();
 
                         } catch (Exception ex) {
@@ -110,8 +108,6 @@ public class UpdateReservation extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 dispose();
-                ManageReservation manageReservation = new ManageReservation();
-                manageReservation.Load();
             }
         });
     }
