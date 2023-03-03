@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="view.Manager.UpdateRooms">
+  <grid id="27dc6" binding="UpdateRoomPanel" layout-manager="BorderLayout" hgap="0" vgap="0">
+    <constraints>
+      <xy x="20" y="20" width="402" height="501"/>
+    </constraints>
+    <properties>
+      <preferredSize width="400" height="600"/>
+    </properties>
+    <border type="none"/>
+    <children>
+      <grid id="c9871" binding="JPanel1" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
+        <constraints border-constraint="West"/>
+        <properties>
+          <background color="-1313285"/>
+          <maximumSize width="0" height="0"/>
+          <minimumSize width="0" height="0"/>
+          <opaque value="true"/>
+          <preferredSize width="400" height="300"/>
+        </properties>
+        <border type="none"/>
+        <children>
+          <grid id="b406b" binding="JPanel2" layout-manager="BorderLayout" hgap="0" vgap="0">
+            <constraints/>
+            <properties>
+              <background color="-14073919"/>
+              <minimumSize width="0" height="0"/>
+              <preferredSize width="400" height="80"/>
+            </properties>
+            <border type="none"/>
+            <children>
+              <component id="8ed4c" class="javax.swing.JLabel" binding="lblUpdateRoom">
+                <constraints border-constraint="Center"/>
+                <properties>
+                  <alignmentX value="0.5"/>
+                  <background color="-1"/>
+                  <font name="Fira Code" size="24" style="1"/>
+                  <foreground color="-1"/>
+                  <horizontalAlignment value="0"/>
+                  <horizontalTextPosition value="0"/>
+                  <text value="UPDATE ROOM DETAILS"/>
+                </properties>
+              </component>
+            </children>
+          </grid>
+          <grid id="fe410" binding="JPanel3" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
+            <constraints/>
+            <properties>
+              <background color="-1313285"/>
+              <focusCycleRoot value="false"/>
+              <focusTraversalPolicyProvider value="false"/>
+              <opaque value="true"/>
+              <preferredSize width="400" height="320"/>
+              <requestFocusEnabled value="true"/>
+            </properties>
+            <border type="none"/>
+            <children>
+              <grid id="1d720" layout-manager="BorderLayout" hgap="5" vgap="0">
+                <constraints/>
+                <properties>
+                  <background color="-1313285"/>
+                  <font name="Fira Code" size="14" style="1"/>
+                  <preferredSize width="300" height="20"/>
+                </properties>
+                <border type="none"/>
+                <children/>
+              </grid>
+              <grid id="73764" layout-manager="BorderLayout" hgap="5" vgap="0">
+                <constraints/>
+                <properties>
+                  <background color="-1313285"/>
+                  <font name="Fira Code" size="14" style="1"/>
+                  <preferredSize width="300" height="50"/>
+                </properties>
+                <border type="none"/>
+                <children>
+                  <component id="f7c75" class="javax.swing.JLabel" binding="lblRoomNo">
+                    <constraints border-constraint="North"/>
+                    <properties>
+                      <font name="Fira Code" size="16" style="0"/>
+                      <preferredSize width="350" height="18"/>
+                      <text value="Room No"/>
+                    </properties>
+                  </component>
+                  <component id="a1604" class="javax.swing.JTextField" binding="tFieldRoomNo">
+                    <constraints border-constraint="Center"/>
+                    <properties>
+                      <autoscrolls value="false"/>
+                      <font name="Fira Code" size="16" style="0"/>
+                    </properties>
+                  </component>
+                </children>
+              </grid>
+              <grid id="836ab" layout-manager="BorderLayout" hgap="0" vgap="0">
+                <constraints/>
+                <properties>
+                  <background color="-1313285"/>
+                  <font name="Fira Code" size="14" style="1"/>
+                  <preferredSize width="300" height="50"/>
+                </properties>
+                <border type="none"/>
+                <children>
+                  <component id="c5360" class="javax.swing.JLabel" binding="lblRoomType">
+                    <constraints border-constraint="North"/>
+                    <properties>
+                      <font name="Fira Code" size="16" style="0"/>
+                      <preferredSize width="350" height="18"/>
+                      <text value="Room Type"/>
+                    </properties>
+                  </component>
+                  <component id="3feb4" class="javax.swing.JComboBox" binding="comboBoxRoomType">
+                    <constraints border-constraint="Center"/>
+                    <properties>
+                      <font name="Fira Code" size="16" style="0"/>
+                      <model>
+                        <item value="Computer Lab"/>
+                        <item value="Tutorial Room"/>
+                        <item value="Lecture Theatre"/>
+                      </model>
+                    </properties>
+                  </component>
+                </children>
+              </grid>
+              <grid id="89283" layout-manager="BorderLayout" hgap="0" vgap="0">
+                <constraints/>
+                <properties>
+                  <background color="-1313285"/>
+                  <font name="Fira Code" size="14" style="1"/>
+                  <preferredSize width="300" height="50"/>
+                </properties>
+                <border type="none"/>
+                <children>
+                  <component id="515a7" class="javax.swing.JLabel">
+                    <constraints border-constraint="North"/>
+                    <properties>
+                      <font name="Fira Code" size="16" style="0"/>
+                      <preferredSize width="350" height="18"/>
+                      <text value="Room Size"/>
+                    </properties>
+                  </component>
+                  <component id="6fdb7" class="javax.swing.JTextField" binding="tFieldRoomSize">
+                    <constraints border-constraint="Center"/>
+                    <properties>
+                      <font name="Fira Code" size="16" style="0"/>
+                    </properties>
+                  </component>
+                </children>
+              </grid>
+              <grid id="f97fb" layout-manager="BorderLayout" hgap="0" vgap="0">
+                <constraints/>
+                <properties>
+                  <background color="-1313285"/>
+                  <font name="Fira Code" size="14" style="1"/>
+                  <preferredSize width="300" height="50"/>
+                </properties>
+                <border type="none"/>
+                <children>
+                  <component id="8fd9a" class="javax.swing.JLabel">
+                    <constraints border-constraint="North"/>
+                    <properties>
+                      <font name="Fira Code" size="16" style="0"/>
+                      <preferredSize width="350" height="18"/>
+                      <text value="Availability"/>
+                    </properties>
+                  </component>
+                  <component id="f3dd1" class="javax.swing.JComboBox" binding="comboBoxAvailability">
+                    <constraints border-constraint="Center"/>
+                    <properties>
+                      <font name="Fira Code" size="16" style="0"/>
+                      <model>
+                        <item value="Available"/>
+                        <item value="Unavailable"/>
+                      </model>
+                    </properties>
+                  </component>
+                </children>
+              </grid>
+              <grid id="dd7f0" layout-manager="BorderLayout" hgap="0" vgap="0">
+                <constraints/>
+                <properties>
+                  <background color="-1313285"/>
+                  <font name="Fira Code" size="14" style="1"/>
+                  <preferredSize width="300" height="50"/>
+                </properties>
+                <border type="none"/>
+                <children>
+                  <component id="1a0b3" class="javax.swing.JLabel">
+                    <constraints border-constraint="North"/>
+                    <properties>
+                      <font name="Fira Code" size="16" style="0"/>
+                      <preferredSize width="350" height="18"/>
+                      <text value="Room Status"/>
+                    </properties>
+                  </component>
+                  <component id="10aa3" class="javax.swing.JComboBox" binding="comboBoxStatus">
+                    <constraints border-constraint="Center"/>
+                    <properties>
+                      <font name="Fira Code" size="16" style="0"/>
+                      <model>
+                        <item value="Free"/>
+                        <item value="Under Maintenance"/>
+                        <item value="Booked"/>
+                      </model>
+                    </properties>
+                  </component>
+                </children>
+              </grid>
+            </children>
+          </grid>
+          <grid id="32291" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
+            <constraints/>
+            <properties>
+              <background color="-1313285"/>
+              <preferredSize width="400" height="100"/>
+            </properties>
+            <border type="none"/>
+            <children>
+              <component id="14208" class="javax.swing.JButton" binding="btnUpdate">
+                <constraints/>
+                <properties>
+                  <alignmentX value="0.5"/>
+                  <background color="-13728063"/>
+                  <borderPainted value="false"/>
+                  <font name="Fira Code" size="16" style="1"/>
+                  <foreground color="-1"/>
+                  <preferredSize width="300" height="38"/>
+                  <text value="Update"/>
+                </properties>
+              </component>
+              <component id="bf0e0" class="javax.swing.JButton" binding="btnCancel">
+                <constraints/>
+                <properties>
+                  <actionCommand value="Cancel"/>
+                  <alignmentX value="0.5"/>
+                  <background color="-13728063"/>
+                  <borderPainted value="false"/>
+                  <font name="Fira Code" size="16" style="1"/>
+                  <foreground color="-1"/>
+                  <preferredSize width="300" height="38"/>
+                  <text value="Cancel"/>
+                </properties>
+              </component>
+            </children>
+          </grid>
+        </children>
+      </grid>
+    </children>
+  </grid>
+</form>

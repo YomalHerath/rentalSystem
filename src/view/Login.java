@@ -75,7 +75,9 @@ public class Login extends JFrame {
         forgotPasswordButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                dispose();
+                ForgotPassword forgotPassword = new ForgotPassword();
+                forgotPassword.setVisible(true);
             }
         });
     }

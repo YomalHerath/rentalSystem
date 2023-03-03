@@ -2,15 +2,13 @@ package controller.Login;
 
 import database.DBConnection;
 import model.Clerk;
-import view.ClerkDashboard;
 import view.Login;
-import view.ManagerDashboard;
+import view.Manager.ManagerDashboard;
 
 import javax.swing.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLOutput;
 
 public class LoginImplement {
     private boolean loggedIn;
@@ -26,10 +24,19 @@ public class LoginImplement {
             ResultSet resultSet = preparedStatement.executeQuery();
 
             if (resultSet.next()) {
-                JOptionPane.showMessageDialog(null,"Login Successful!");
-                ManagerDashboard managerDashboard = new ManagerDashboard();
-                managerDashboard.setVisible(true);
-                return true;
+
+                if (resultSet.getString("userType").equals("1")){
+                    JOptionPane.showMessageDialog(null,"Login Successful!");
+                    ManagerDashboard managerDashboard = new ManagerDashboard();
+                    managerDashboard.setVisible(true);
+                    return true;
+                } else {
+                    JOptionPane.showMessageDialog(null,"Login Successful!");
+                    ManagerDashboard managerDashboard = new ManagerDashboard();
+                    managerDashboard.setVisible(true);
+                    return true;
+                }
+
             } else {
                 JOptionPane.showMessageDialog(null,"Invalid email or password, Try again!");
                 Login login = new Login();
@@ -46,4 +53,24 @@ public class LoginImplement {
     public boolean isLoggedIn() {
         return loggedIn;
     }
+
+    public void ForgotPassword(String email, String password){
+        Thread thread = new Thread(() -> {
+            try {
+                Connection con = DBConnection.getConnection();
+                String sql = "UPDATE clerk SET password=? WHERE email=?";
+                PreparedStatement ps = con.prepareStatement(sql);
+                ps.setString(1, password);
+                ps.setString(2, email);
+                ps.executeUpdate();
+                JOptionPane.showMessageDialog(null, "Updated!");
+            } catch (Exception e) {
+                e.printStackTrace();
+                JOptionPane.showMessageDialog(null, "Fail to update clerk" + e.getMessage());
+            }
+        });
+        thread.start();
+    }
 }
+
+
