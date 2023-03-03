@@ -103,7 +103,6 @@ public class UpdateRooms extends JFrame {
     }
 
     public static void main(String[] args) {
-        UpdateRooms updateRoomDetails = new UpdateRooms("178");
     }
 
 }
