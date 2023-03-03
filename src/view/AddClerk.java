@@ -11,8 +11,12 @@ import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class AddClerk extends JFrame {
+    // create clerk object in public
+    public Clerk clerk;
     private JPanel JPanel1;
     private JPanel JPanel2;
     private JLabel lblAddClerk;
@@ -30,25 +34,6 @@ public class AddClerk extends JFrame {
     private JPanel AddClerkPanel;
     private JPasswordField tFieldPassword;
     private JPasswordField tFieldCPassword;
-
-    // password uppercase and lowercase letter validation
-    private static boolean containsUppercaseAndLowercase(String str) {
-        boolean hasUppercase = false;
-        boolean hasLowercase = false;
-
-        for (int i = 0; i < str.length(); i++) {
-            if (Character.isUpperCase(str.charAt(i))) {
-                hasUppercase = true;
-            } else if (Character.isLowerCase(str.charAt(i))) {
-                hasLowercase = true;
-            }
-
-            if (hasUppercase && hasLowercase) {
-                return true;
-            }
-        }
-        return false;
-    }
 
     //setup view of frame
     public AddClerk() {
@@ -77,8 +62,7 @@ public class AddClerk extends JFrame {
                 String cpassword = tFieldCPassword.getText().trim();
 
                 // Define the regex pattern for email validation (not match)
-                String emailPattern = "^(?:(?![a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@" +
-                        "(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}).)*$";
+                String emailPattern = "^(?:(?![a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@" + "(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}).)*$";
 
                 // requires the username can contain only letters
                 String usernamePattern = "^[a-zA-Z]$";
@@ -95,9 +79,7 @@ public class AddClerk extends JFrame {
                 } else if (cpassword.isEmpty()) {
                     JOptionPane.showMessageDialog(tFieldCPassword, "Enter Confirm Password", "Error", JOptionPane.ERROR_MESSAGE);
                 } else if (username.matches(usernamePattern)) {
-                    JOptionPane.showMessageDialog(tFieldUsername, "Username must have a minimum length of 3 characters " +
-                                    "and a maximum length of 20 characters, and can contain only letters",
-                            "Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(tFieldUsername, "Username must have a minimum length of 3 characters " + "and a maximum length of 20 characters, and can contain only letters", "Error", JOptionPane.ERROR_MESSAGE);
                 } else if (email.matches(emailPattern)) {
                     JOptionPane.showMessageDialog(tFieldEmail, "Invalid Email Format", "Error", JOptionPane.ERROR_MESSAGE);
                 } else if (password.length() < 6) {
@@ -108,7 +90,9 @@ public class AddClerk extends JFrame {
                     JOptionPane.showMessageDialog(tFieldPassword, "Passwords don't match", "Error", JOptionPane.ERROR_MESSAGE);
                 } else {
 
-                    Thread thread = new Thread(new Runnable() {
+                    // Create a new ExecutorService with a fixed pool of threads
+                    ExecutorService executor = Executors.newSingleThreadExecutor();
+                    executor.submit(new Runnable() {
                         public void run() {
                             try {
                                 try {
@@ -152,8 +136,7 @@ public class AddClerk extends JFrame {
                             }
                         }
                     });
-                    // Start the process in a separate thread
-                    thread.start();
+                    executor.shutdown();
                 }
             }
         });
@@ -169,11 +152,26 @@ public class AddClerk extends JFrame {
         });
     }
 
-    // create clerk object in public
-    public Clerk clerk;
+    // password uppercase and lowercase letter validation
+    private static boolean containsUppercaseAndLowercase(String str) {
+        boolean hasUppercase = false;
+        boolean hasLowercase = false;
+
+        for (int i = 0; i < str.length(); i++) {
+            if (Character.isUpperCase(str.charAt(i))) {
+                hasUppercase = true;
+            } else if (Character.isLowerCase(str.charAt(i))) {
+                hasLowercase = true;
+            }
+
+            if (hasUppercase && hasLowercase) {
+                return true;
+            }
+        }
+        return false;
+    }
 
     public static void main(String[] args) {
         AddClerk addClerk = new AddClerk();
-        Clerk clerk = addClerk.clerk;
     }
 }

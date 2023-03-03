@@ -76,9 +76,15 @@ public class ManageRooms extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 Room room = new Room();
                 room.setRoomNo(tFieldRoomId.getText());
-                RoomImplement roomImplement = new RoomImplement();
-                roomImplement.delete(room);
-                Load();
+                String roomNo = tFieldRoomId.getText().trim();
+                //validate field
+                if (roomNo.isEmpty()) {
+                    JOptionPane.showMessageDialog(tFieldRoomId, "Enter Room No", "Error", JOptionPane.ERROR_MESSAGE);
+                } else {
+                    RoomImplement roomImplement = new RoomImplement();
+                    roomImplement.delete(room);
+                    Load();
+                }
             }
         });
         btnAddReservation.addActionListener(new ActionListener() {

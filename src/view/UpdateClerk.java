@@ -81,16 +81,25 @@ public class UpdateClerk extends JFrame {
                 } else if (email.matches(emailPattern)) {
                     JOptionPane.showMessageDialog(tFieldEmail, "Invalid Email Format", "Error", JOptionPane.ERROR_MESSAGE);
                 } else {
-                    clerk.setFullName(fullName);
-                    clerk.setUsername(username);
-                    clerk.setEmail(email);
-                    clerk.setClerkId(clerkId);
+                    Thread thread = new Thread(new Runnable() {
+                        public void run() {
+                            try {
+                                clerk.setFullName(fullName);
+                                clerk.setUsername(username);
+                                clerk.setEmail(email);
+                                clerk.setClerkId(clerkId);
 
-                    ClerkImplement clerkImplement = new ClerkImplement();
-                    clerkImplement.update(clerk);
-                    ManageClerks manageClerks = new ManageClerks();
-                    manageClerks.Load();
-                    dispose();
+                                ClerkImplement clerkImplement = new ClerkImplement();
+                                clerkImplement.update(clerk);
+                                ManageClerks manageClerks = new ManageClerks();
+                                manageClerks.Load();
+                                dispose();
+                            } catch (Exception e) {
+                                JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+                            }
+                        }
+                    });
+                    thread.start();
                 }
             }
         });

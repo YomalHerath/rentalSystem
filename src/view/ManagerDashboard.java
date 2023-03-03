@@ -41,7 +41,7 @@ public class ManagerDashboard extends JFrame {
         manageReservationsButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ManageReservation manageReservation = new ManageReservation(null);
+                ManageReservation manageReservation = new ManageReservation();
                 manageReservation.setVisible(true);
             }
         });

@@ -4,59 +4,183 @@ import database.DBConnection;
 import model.Reservation;
 
 import javax.swing.*;
-import java.sql.Connection;
-import java.sql.Date;
-import java.sql.PreparedStatement;
-import java.text.SimpleDateFormat;
+import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
-public class ReservationImplement implements ReservationInterface {
-    @Override
+public class ReservationImplement {
     public void save(Reservation reservation) {
-        try {
 
-            Connection con =  DBConnection.getConnection();
-            String query = "INSERT INTO reservation(clientName,clientContact,Occation,fromDate,toDate,reservedTime,endTime,timeOfDay,note,roomNo) " +
-                    "VALUES (?,?,?,?,?,?,?,?,?,?)";
-            PreparedStatement preparedStatement = con.prepareStatement(query);
-            preparedStatement.setString(1, reservation.getClientName());
-            preparedStatement.setString(2, reservation.getClientContact());
-            preparedStatement.setString(3, reservation.getOccasion());
+        Thread thread = new Thread(() -> {
+            try {
+                Connection conn = null;
+                PreparedStatement pstmt = null;
+                conn = DBConnection.getConnection();
+                String sql = "INSERT INTO reservation (roomNo, clientName, clientContact, occasion, fromDate, toDate, reservedTime, endtime, timeOfDay, note) " + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-            preparedStatement.setString(4, reservation.getStartDate());
+                pstmt = conn.prepareStatement(sql);
+                pstmt.setString(1, reservation.getRoomNo());
+                pstmt.setString(2, reservation.getClientName());
+                pstmt.setString(3, reservation.getClientContact());
+                pstmt.setString(4, reservation.getOccasion());
 
-            preparedStatement.setString(5, reservation.getEndDate());
+                if (reservation.getStartDate() != null) {
+                    java.util.Date fromDate = reservation.getStartDate();
+                    java.sql.Date sqlFromDate = new java.sql.Date(fromDate.getTime());
+                    pstmt.setDate(5, sqlFromDate);
+                } else {
+                    pstmt.setNull(5, java.sql.Types.DATE);
+                }
 
-            preparedStatement.setInt(6, reservation.getStime());
-            preparedStatement.setInt(7, reservation.getEtime());
-            preparedStatement.setString(8, reservation.getTimeOfDay());
-            preparedStatement.setString(9, reservation.getNote());
-            preparedStatement.setString(10, reservation.getRoomNo());
-            preparedStatement.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Saved!");
-        } catch (Exception e) {
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Error");
-        }
+                if (reservation.getEndDate() != null) {
+                    java.util.Date toDate = reservation.getEndDate();
+                    java.sql.Date sqlToDate = new java.sql.Date(toDate.getTime());
+                    pstmt.setDate(6, sqlToDate);
+                } else {
+                    pstmt.setNull(6, java.sql.Types.DATE);
+                }
+
+                pstmt.setInt(7, reservation.getStime());
+                pstmt.setInt(8, reservation.getEtime());
+                pstmt.setString(9, reservation.getTimeOfDay());
+                pstmt.setString(10, reservation.getNote());
+                pstmt.executeUpdate();
+
+                //update the room table as unavailable
+                String sql2 = "UPDATE room SET availability = 'Unavailable', status = 'Booked' WHERE roomNo = '" + reservation.getRoomNo() + "'";
+
+                Statement statement = conn.createStatement();
+                pstmt.execute(sql2);
+
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+        });
+        thread.start();
     }
 
-    @Override
+
     public void update(Reservation reservation) {
+        Thread thread = new Thread(() -> {
+            try {
+                Connection con = DBConnection.getConnection();
+                String sql = "UPDATE reservation SET clientName=?, clientContact=?, Occasion=?, fromDate=?, toDate=? ,reservedTime=?, endTime=?, timeOfDay=?, note=?, status=? WHERE reservationId=?";
+                PreparedStatement ps = con.prepareStatement(sql);
+                ps.setString(1, reservation.getClientName());
+                ps.setString(2, reservation.getClientContact());
+                ps.setString(3, reservation.getOccasion());
+                if (reservation.getStartDate() != null) {
+                    java.util.Date fromDate = reservation.getStartDate();
+                    java.sql.Date sqlFromDate = new java.sql.Date(fromDate.getTime());
+                    ps.setDate(5, sqlFromDate);
+                } else {
+                    ps.setNull(5, java.sql.Types.DATE);
+                }
 
+                if (reservation.getEndDate() != null) {
+                    java.util.Date toDate = reservation.getEndDate();
+                    java.sql.Date sqlToDate = new java.sql.Date(toDate.getTime());
+                    ps.setDate(6, sqlToDate);
+                } else {
+                    ps.setNull(6, java.sql.Types.DATE);
+                }
+                ps.setInt(7, reservation.getStime());
+                ps.setInt(8, reservation.getEtime());
+                ps.setString(9, reservation.getTimeOfDay());
+                ps.setString(10, reservation.getNote());
+                ps.executeUpdate();
+
+                String occasion = reservation.getOccasion();
+
+                if (occasion.equals("Completed") || occasion.equals("Canceled")){
+                    //update the room table as available
+                    String sql2 = "UPDATE room SET availability = 'Available', status = 'Booked' WHERE roomNo = '" + reservation.getRoomNo() + "'";
+                    Statement statement = con.createStatement();
+                    ps.execute(sql2);
+                }
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
+        thread.start();
     }
 
-    @Override
-    public void remove(Reservation reservation) {
+    public Reservation get(String reservationId) {
+        Reservation reservation = new Reservation();
+        Thread thread = new Thread(() -> {
+            try {
+                Connection con = DBConnection.getConnection();
+                String sql = "SELECT * FROM reservation WHERE reservationId=?";
+                PreparedStatement preparedStatement = con.prepareStatement(sql);
+                preparedStatement.setString(1, reservationId);
+                ResultSet resultSet = preparedStatement.executeQuery();
+                if (resultSet.next()) {
+                    reservation.setRoomNo(resultSet.getString("roomNo"));
+                    reservation.setClientName(resultSet.getString("clientName"));
+                    reservation.setClientContact(resultSet.getString("clientContact"));
+                    reservation.setOccasion(resultSet.getString("Occasion"));
+                    reservation.setStartDate(resultSet.getDate("fromDate"));
+                    reservation.setEndDate(resultSet.getDate("toDate"));
+                    reservation.setStime(resultSet.getInt("reservedTime"));
+                    reservation.setEtime(resultSet.getInt("endTime"));
+                    reservation.setTimeOfDay(resultSet.getString("timeOfDay"));
+                    reservation.setNote(resultSet.getString("note"));
+                    reservation.setStatus(resultSet.getString("status"));
 
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
+        thread.start();
+        try {
+            thread.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return reservation;
     }
 
-    @Override
-    public Reservation get(int reservationId) {
-        return null;
-    }
-
-    @Override
     public List<Reservation> list() {
-        return null;
+        List<Reservation> list = new ArrayList<Reservation>();
+        Thread thread = new Thread(() -> {
+            try {
+                Connection con = DBConnection.getConnection();
+                String sql = "SELECT * FROM reservation";
+                PreparedStatement preparedStatement = con.prepareStatement(sql);
+                ResultSet resultSet = preparedStatement.executeQuery();
+
+                //data will be added until finish
+                while (resultSet.next()) {
+                    Reservation reservation = new Reservation();
+                    reservation.setReservationId(resultSet.getInt("reservationId"));
+                    reservation.setRoomNo(resultSet.getString("roomNo"));
+                    reservation.setClientName(resultSet.getString("clientName"));
+                    reservation.setClientContact(resultSet.getString("clientContact"));
+                    reservation.setOccasion(resultSet.getString("Occasion"));
+                    reservation.setStartDate(resultSet.getDate("fromDate"));
+                    reservation.setEndDate(resultSet.getDate("toDate"));
+                    reservation.setStime(resultSet.getInt("reservedTime"));
+                    reservation.setEtime(resultSet.getInt("endTime"));
+                    reservation.setTimeOfDay(resultSet.getString("timeOfDay"));
+                    reservation.setNote(resultSet.getString("note"));
+                    reservation.setStatus(resultSet.getString("status"));
+                    list.add(reservation);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
+        thread.start();
+        try {
+            thread.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return list;
+
     }
 }

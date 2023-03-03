@@ -57,6 +57,14 @@ public class Room {
         this.roomStatus = roomStatus;
     }
 
+    public Room(String roomNo, String roomType, int roomSize) {
+        this.roomNo = roomNo;
+        this.roomType = roomType;
+        this.roomSize = roomSize;
+    }
+
+    public Room(){}
+
     @Override
     public String toString() {
         return "Room{" +

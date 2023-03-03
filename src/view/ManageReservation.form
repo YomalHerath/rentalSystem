@@ -80,6 +80,7 @@
             <properties>
               <font name="Fira Code" size="14" style="0"/>
               <preferredSize width="275" height="40"/>
+              <text value="Enter Reservation Id"/>
             </properties>
           </component>
           <component id="a1d93" class="javax.swing.JButton" binding="btnUpdateReservation">
@@ -96,22 +97,6 @@
               <label value="Update"/>
               <preferredSize width="175" height="40"/>
               <text value="Update"/>
-            </properties>
-          </component>
-          <component id="5b736" class="javax.swing.JButton" binding="btnViewReservation">
-            <constraints/>
-            <properties>
-              <actionCommand value="View Reservation"/>
-              <alignmentX value="0.5"/>
-              <background color="-13728063"/>
-              <font name="Fira Code" size="14" style="1"/>
-              <foreground color="-1"/>
-              <horizontalAlignment value="0"/>
-              <horizontalTextPosition value="0"/>
-              <inheritsPopupMenu value="false"/>
-              <label value="View"/>
-              <preferredSize width="175" height="40"/>
-              <text value="View"/>
             </properties>
           </component>
         </children>
@@ -140,7 +125,7 @@
                   <dropMode value="USE_SELECTION"/>
                   <enabled value="false"/>
                   <fillsViewportHeight value="false"/>
-                  <font name="Fira Code" size="14" style="0"/>
+                  <font name="Fira Code" size="16" style="0"/>
                   <preferredScrollableViewportSize width="450" height="450"/>
                   <preferredSize width="1280" height="450"/>
                 </properties>

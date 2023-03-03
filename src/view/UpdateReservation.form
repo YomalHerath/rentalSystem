@@ -79,33 +79,6 @@
                   </component>
                 </children>
               </grid>
-              <grid id="70884" layout-manager="BorderLayout" hgap="5" vgap="0">
-                <constraints/>
-                <properties>
-                  <background color="-1313285"/>
-                  <font name="Fira Code" size="14" style="1"/>
-                  <preferredSize width="300" height="35"/>
-                </properties>
-                <border type="none"/>
-                <children>
-                  <component id="e8de1" class="javax.swing.JLabel" binding="lblRoomType">
-                    <constraints border-constraint="West"/>
-                    <properties>
-                      <font name="Fira Code" size="14" style="0"/>
-                      <preferredSize width="150" height="18"/>
-                      <text value="Room Type"/>
-                    </properties>
-                  </component>
-                  <component id="1e7ec" class="javax.swing.JLabel" binding="lblFillRoomType">
-                    <constraints border-constraint="East"/>
-                    <properties>
-                      <font name="Fira Code" size="14" style="0"/>
-                      <preferredSize width="150" height="18"/>
-                      <text value=""/>
-                    </properties>
-                  </component>
-                </children>
-              </grid>
               <grid id="38d71" layout-manager="BorderLayout" hgap="5" vgap="0">
                 <constraints/>
                 <properties>
@@ -274,22 +247,18 @@
                 </properties>
                 <border type="none"/>
                 <children>
-                  <component id="d382c" class="javax.swing.JLabel">
+                  <component id="19b9" class="javax.swing.JLabel">
                     <constraints border-constraint="North"/>
                     <properties>
                       <font name="Fira Code" size="14" style="0"/>
                       <preferredSize width="350" height="18"/>
-                      <text value=""/>
+                      <text value="End Time"/>
                     </properties>
                   </component>
-                  <component id="9d09c" class="javax.swing.JComboBox" binding="comboBoxTimeSelect">
+                  <component id="49adf" class="javax.swing.JSpinner" binding="spinnerEndTime">
                     <constraints border-constraint="Center"/>
                     <properties>
                       <font name="Fira Code" size="14" style="0"/>
-                      <model>
-                        <item value="AM"/>
-                        <item value="PM"/>
-                      </model>
                     </properties>
                   </component>
                 </children>
@@ -308,10 +277,39 @@
                     <properties>
                       <font name="Fira Code" size="14" style="0"/>
                       <preferredSize width="350" height="18"/>
+                      <text value="Time of Date"/>
+                    </properties>
+                  </component>
+                  <component id="9d09c" class="javax.swing.JComboBox" binding="comboBoxTimeSelect">
+                    <constraints border-constraint="Center"/>
+                    <properties>
+                      <font name="Fira Code" size="14" style="0"/>
+                      <model>
+                        <item value="AM"/>
+                        <item value="PM"/>
+                      </model>
+                    </properties>
+                  </component>
+                </children>
+              </grid>
+              <grid id="c56d0" layout-manager="BorderLayout" hgap="5" vgap="0">
+                <constraints/>
+                <properties>
+                  <background color="-1313285"/>
+                  <font name="Fira Code" size="14" style="1"/>
+                  <preferredSize width="300" height="50"/>
+                </properties>
+                <border type="none"/>
+                <children>
+                  <component id="70589" class="javax.swing.JLabel">
+                    <constraints border-constraint="North"/>
+                    <properties>
+                      <font name="Fira Code" size="14" style="0"/>
+                      <preferredSize width="350" height="18"/>
                       <text value="Status"/>
                     </properties>
                   </component>
-                  <component id="940f0" class="javax.swing.JComboBox">
+                  <component id="99780" class="javax.swing.JComboBox" binding="comboBoxStatus">
                     <constraints border-constraint="Center"/>
                     <properties>
                       <font name="Fira Code" size="14" style="0"/>

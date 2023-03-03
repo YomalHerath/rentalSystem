@@ -1,6 +1,5 @@
 package view;
 
-import controller.clerk.ClerkImplement;
 import controller.room.RoomImplement;
 import model.Room;
 
@@ -25,12 +24,12 @@ public class UpdateRooms extends JFrame {
     private JComboBox comboBoxAvailability;
     private JComboBox comboBoxStatus;
 
-    public UpdateRooms(String roomNo){
+    public UpdateRooms(String roomNo) {
         super();
         setTitle("Room Rental System");
         setContentPane(UpdateRoomPanel);
         //set minimum size for dialog
-        setMinimumSize(new Dimension(400,600));
+        setMinimumSize(new Dimension(400, 600));
         //display dialog in the middle of the frame
         setLocationRelativeTo(UpdateRoomPanel);
         setResizable(false);
@@ -62,23 +61,34 @@ public class UpdateRooms extends JFrame {
                 String roomStatus = comboBoxStatus.getSelectedItem().toString();
 
                 //validate field
-                if (roomNo.isEmpty()){
+                if (roomNo.isEmpty()) {
                     JOptionPane.showMessageDialog(tFieldRoomNo, "Room No cannot be blank", "Error", JOptionPane.ERROR_MESSAGE);
                 } else if (roomSize < 0) {
                     JOptionPane.showMessageDialog(tFieldRoomSize, "Enter valid seat Count", "Error", JOptionPane.ERROR_MESSAGE);
                 } else {
-                    room.setRoomNo(roomNo);
-                    room.setRoomType(roomType);
-                    room.setRoomSize(roomSize);
-                    room.setRoomAvailability(roomAvailability);
-                    room.setRoomStatus(roomStatus);
-                    room.setRoomId(id);
+                    Thread thread = new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            try {
+                                room.setRoomNo(roomNo);
+                                room.setRoomType(roomType);
+                                room.setRoomSize(roomSize);
+                                room.setRoomAvailability(roomAvailability);
+                                room.setRoomStatus(roomStatus);
+                                room.setRoomId(id);
 
-                    RoomImplement roomImplement = new RoomImplement();
-                    roomImplement.update(room);
-                    ManageRooms manageRooms = new ManageRooms();
-                    manageRooms.Load();
-                    dispose();
+                                RoomImplement roomImplement = new RoomImplement();
+                                roomImplement.update(room);
+                                ManageRooms manageRooms = new ManageRooms();
+                                manageRooms.Load();
+                                dispose();
+                            } catch (Exception e) {
+                                JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+                            }
+                        }
+                    });
+                    thread.start();
+
                 }
             }
         });

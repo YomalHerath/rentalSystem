@@ -3,17 +3,17 @@ package controller.clerk;
 import database.DBConnection;
 import model.Clerk;
 
+import javax.swing.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.List;
 import java.util.ArrayList;
-import javax.swing.JOptionPane;
+import java.util.List;
 
 public class ClerkImplement {
 
     public void save(Clerk clerk) {
-        new Thread(() -> {
+        Thread thread = new Thread(() -> {
             try {
                 Connection con = DBConnection.getConnection();
                 String query = "INSERT INTO clerk(fullName,username,email,password) VALUES (?,?,?,?)";
@@ -28,11 +28,12 @@ public class ClerkImplement {
                 e.printStackTrace();
                 JOptionPane.showMessageDialog(null, "Fail to insert clerk" + e.getMessage());
             }
-        }).start();
+        });
+        thread.start();
     }
 
     public void update(Clerk clerk) {
-        new Thread(() -> {
+        Thread thread = new Thread(() -> {
             try {
                 Connection con = DBConnection.getConnection();
                 String sql = "UPDATE clerk SET fullname=?,username=?,email=? WHERE clerkId=?";
@@ -47,18 +48,20 @@ public class ClerkImplement {
                 e.printStackTrace();
                 JOptionPane.showMessageDialog(null, "Fail to update clerk" + e.getMessage());
             }
-        }).start();
+        });
+        thread.start();
     }
 
     public Clerk get(int clerkId) {
         Clerk clerk = new Clerk();
+        Thread thread = new Thread(() -> {
         try {
             Connection con = DBConnection.getConnection();
             String sql = "SELECT * FROM clerk WHERE clerkId=?";
             PreparedStatement preparedStatement = con.prepareStatement(sql);
             preparedStatement.setInt(1, clerkId);
             ResultSet resultSet = preparedStatement.executeQuery();
-            if(resultSet.next()){
+            if (resultSet.next()) {
                 clerk.setClerkId(resultSet.getInt("clerkId"));
                 clerk.setFullName(resultSet.getString("fullName"));
                 clerk.setUsername(resultSet.getString("username"));
@@ -68,33 +71,49 @@ public class ClerkImplement {
         } catch (Exception e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Error");
+        }
+        });
+        thread.start();
+        try {
+            thread.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
         return clerk;
     }
 
     public List<Clerk> list() {
         List<Clerk> list = new ArrayList<Clerk>();
-        try {
-            Connection con = DBConnection.getConnection();
-            String sql = "SELECT * FROM clerk WHERE userType = 0";
-            PreparedStatement preparedStatement = con.prepareStatement(sql);
-            ResultSet resultSet = preparedStatement.executeQuery();
+        Thread thread = new Thread(() -> {
+            try {
+                Connection con = DBConnection.getConnection();
+                String sql = "SELECT * FROM clerk WHERE userType = 0";
+                PreparedStatement preparedStatement = con.prepareStatement(sql);
+                ResultSet resultSet = preparedStatement.executeQuery();
 
-            //data will be added until finish
-            while(resultSet.next()){
-                Clerk clerk = new Clerk();
-                clerk.setClerkId(resultSet.getInt("clerkId"));
-                clerk.setFullName(resultSet.getString("fullName"));
-                clerk.setUsername(resultSet.getString("username"));
-                clerk.setEmail(resultSet.getString("email"));
-                list.add(clerk);
+                //data will be added until finish
+                while (resultSet.next()) {
+                    Clerk clerk = new Clerk();
+                    clerk.setClerkId(resultSet.getInt("clerkId"));
+                    clerk.setFullName(resultSet.getString("fullName"));
+                    clerk.setUsername(resultSet.getString("username"));
+                    clerk.setEmail(resultSet.getString("email"));
+                    list.add(clerk);
+                }
+
+            } catch (Exception e) {
+                e.printStackTrace();
+                JOptionPane.showMessageDialog(null, "Error");
             }
-
-        } catch (Exception e) {
+        });
+        thread.start();
+        try {
+            thread.join();
+        } catch (InterruptedException e) {
             e.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Error");
         }
         return list;
     }
+
 
 }

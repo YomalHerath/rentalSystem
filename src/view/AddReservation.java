@@ -1,11 +1,8 @@
 package view;
 
-import com.toedter.calendar.JCalendar;
 import com.toedter.calendar.JDateChooser;
 import controller.Reservation.ReservationImplement;
-import controller.room.RoomImplement;
 import model.Reservation;
-import model.Room;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,6 +10,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class AddReservation extends JFrame {
     private JPanel JPanel1;
@@ -40,12 +39,12 @@ public class AddReservation extends JFrame {
     private JPanel toDatePanel;
     private JSpinner spinnerEndTime;
 
-    public AddReservation(String roomNo){
+    public AddReservation(String roomNo) {
         super();
         setTitle("Room Rental System");
         setContentPane(AddReservationPanel);
         //set minimum size for dialog
-        setMinimumSize(new Dimension(400,700));
+        setMinimumSize(new Dimension(400, 700));
         //display dialog in the middle of the frame
         setLocationRelativeTo(AddReservationPanel);
         setResizable(false);
@@ -83,35 +82,67 @@ public class AddReservation extends JFrame {
                 String clientName = tFieldClientName.getText().trim();
                 String clientContactNo = tFieldContactNo.getText().trim();
                 String occasion = comboBoxOccation.getSelectedItem().toString();
-                String sdate = String.valueOf(fromdateChooser.getDate());
-                String edate = String.valueOf(todateChooser.getDate());
-                String am_pm = comboBoxTimeSelect.toString();
+                Date sdate = fromdateChooser.getDate();
+                Date edate = todateChooser.getDate();
+                String am_pm = comboBoxTimeSelect.getSelectedItem().toString();
                 int stime = (Integer) spinnerTime.getValue();
                 int endtime = (Integer) spinnerEndTime.getValue();
                 String note = textAreaNote.getText().trim();
 
-                Reservation reservation = new Reservation();
+                if (clientName.isEmpty()) {
+                    JOptionPane.showMessageDialog(tFieldClientName, "Enter Client Name", "Error", JOptionPane.ERROR_MESSAGE);
+                } else if (clientContactNo.isEmpty()) {
+                    JOptionPane.showMessageDialog(tFieldContactNo, "Enter Client Contact No", "Error", JOptionPane.ERROR_MESSAGE);
+                } else if (stime <= 0) {
+                    JOptionPane.showMessageDialog(spinnerTime, "Select Valid Time", "Error", JOptionPane.ERROR_MESSAGE);
+                } else if (endtime <= 0) {
+                    JOptionPane.showMessageDialog(spinnerEndTime, "Select Valid Time", "Error", JOptionPane.ERROR_MESSAGE);
+                } else {
+                    Reservation reservation = new Reservation();
 
-                //set text
-                reservation.setClientName(clientName);
-                reservation.setClientContact(clientContactNo);
-                reservation.setOccasion(occasion);
-                reservation.setStartDate(sdate);
-                reservation.setEndDate(edate);
-                reservation.setTimeOfDay(am_pm);
-                reservation.setStime(stime);
-                reservation.setEtime(endtime);
-                reservation.setNote(note);
-                reservation.setRoomNo(roomNo);
+                    //set text
+                    reservation.setClientName(clientName);
+                    reservation.setClientContact(clientContactNo);
+                    reservation.setOccasion(occasion);
+                    reservation.setStartDate(sdate);
+                    reservation.setEndDate(edate);
+                    reservation.setTimeOfDay(am_pm);
+                    reservation.setStime(stime);
+                    reservation.setEtime(endtime);
+                    reservation.setNote(note);
+                    reservation.setRoomNo(roomNo);
 
-                ReservationImplement reservationImplement = new ReservationImplement();
-                reservationImplement.save(reservation);
+                    // Create a new ExecutorService with a fixed pool of threads
+                    ExecutorService executor = Executors.newFixedThreadPool(2);
+
+                    // Submit the database operation to the executor
+                    executor.submit(() -> {
+                        // Save the reservation
+                        ReservationImplement reservationImplement = new ReservationImplement();
+                        reservationImplement.save(reservation);
+
+                        // close the window and view manage reservation window
+                        dispose();
+                        ManageReservation manageReservation = new ManageReservation();
+                        manageReservation.setVisible(true);
+
+                        // Update the UI when the operation is complete
+                        SwingUtilities.invokeLater(() -> {
+                            JOptionPane.showMessageDialog(null, "Saved!");
+                        });
+                    });
+                    // Shutdown the executor after it has completed its tasks
+                    executor.shutdown();
+
+                }
+
             }
         });
+
+
     }
 
     public static void main(String[] args) {
-        new AddReservation("1237").setVisible(true);
     }
 }
 

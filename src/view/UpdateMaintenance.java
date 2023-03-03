@@ -3,7 +3,7 @@ package view;
 import javax.swing.*;
 import java.awt.*;
 
-public class UpdateMaintenance extends JDialog {
+public class UpdateMaintenance extends JFrame {
     private JPanel UpdateMaintenancePanel;
     private JPanel JPanel1;
     private JPanel JPanel2;
@@ -27,21 +27,20 @@ public class UpdateMaintenance extends JDialog {
     private JLabel lblMaintenanceNote;
     private JComboBox comboBoxNote;
 
-    public UpdateMaintenance(JFrame jFrame){
-        super(jFrame);
+    public UpdateMaintenance(){
+        super();
         setTitle("Room Rental System");
         setContentPane(UpdateMaintenancePanel);
         //set minimum size for dialog
         setMinimumSize(new Dimension(400,620));
-        setModal(true);
         //display dialog in the middle of the frame
-        setLocationRelativeTo(jFrame);
+        setLocationRelativeTo(UpdateMaintenancePanel);
         setVisible(true);
 
     }
 
     public static void main(String[] args) {
-        UpdateMaintenance updateMaintenance = new UpdateMaintenance(null);
+        UpdateMaintenance updateMaintenance = new UpdateMaintenance();
     }
 
 }

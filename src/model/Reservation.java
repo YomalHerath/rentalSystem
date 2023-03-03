@@ -4,15 +4,33 @@ import java.util.Date;
 
 public class Reservation {
     String roomNo;
+    int reservationId;
     String clientName;
     String clientContact;
     String occasion;
-    String startDate;
-    String endDate;
+    Date startDate;
+    Date endDate;
     int stime;
     int etime;
     String timeOfDay;
     String note;
+    String status;
+
+    public int getReservationId() {
+        return reservationId;
+    }
+
+    public void setReservationId(int reservationId) {
+        this.reservationId = reservationId;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
 
     public String getRoomNo() {
         return roomNo;
@@ -46,19 +64,19 @@ public class Reservation {
         this.occasion = occasion;
     }
 
-    public String getStartDate() {
+    public Date getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(String startDate) {
+    public void setStartDate(Date startDate) {
         this.startDate = startDate;
     }
 
-    public String getEndDate() {
+    public Date getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(String endDate) {
+    public void setEndDate(Date endDate) {
         this.endDate = endDate;
     }
 
@@ -98,6 +116,7 @@ public class Reservation {
     public String toString() {
         return "Reservation{" +
                 "roomNo='" + roomNo + '\'' +
+                ", reservationId=" + reservationId +
                 ", clientName='" + clientName + '\'' +
                 ", clientContact='" + clientContact + '\'' +
                 ", occasion='" + occasion + '\'' +
@@ -107,6 +126,7 @@ public class Reservation {
                 ", etime=" + etime +
                 ", timeOfDay='" + timeOfDay + '\'' +
                 ", note='" + note + '\'' +
+                ", status='" + status + '\'' +
                 '}';
     }
 }

@@ -7,6 +7,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class AddRooms extends JFrame {
     private JPanel AddRoomDetailsPanel;
@@ -22,12 +24,12 @@ public class AddRooms extends JFrame {
     private JButton btnCancel;
     private JSpinner spinnerRoomSize;
 
-    public AddRooms(){
+    public AddRooms() {
         super();
         setTitle("Room Rental System");
         setContentPane(AddRoomDetailsPanel);
         //set minimum size for dialog
-        setMinimumSize(new Dimension(400,450));
+        setMinimumSize(new Dimension(400, 450));
         //display dialog in the middle of the frame
         setLocationRelativeTo(AddRoomDetailsPanel);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -37,32 +39,41 @@ public class AddRooms extends JFrame {
         btnSave.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
-                Room room = new Room();
                 String roomNo = tFieldRoomNo.getText().trim();
                 String roomType = comboBoxRoomType.getSelectedItem().toString();
                 int roomSize = (Integer) spinnerRoomSize.getValue();
 
                 // validate form fields
-                if (roomNo.isEmpty()){
+                if (roomNo.isEmpty()) {
                     JOptionPane.showMessageDialog(tFieldRoomNo, "Enter Room No", "Error", JOptionPane.ERROR_MESSAGE);
                 } else if (roomSize < 0) {
                     JOptionPane.showMessageDialog(null, "Please enter a value more than 0");
                     spinnerRoomSize.setValue(0);
                 } else {
-                    //set text
-                    room.setRoomNo(roomNo);
-                    room.setRoomType(roomType);
-                    room.setRoomSize(roomSize);
-
+                    Room room = new Room(roomNo, roomType, roomSize);
                     RoomImplement roomImplement = new RoomImplement();
-                    roomImplement.save(room);
-                    tFieldRoomNo.setText("");
-                    spinnerRoomSize.setValue(0);
-                }
 
+                    // Create a new ExecutorService with a fixed pool of threads
+                    ExecutorService executor = Executors.newSingleThreadExecutor();
+                    executor.submit(new Runnable() {
+                        @Override
+                        public void run() {
+                            try {
+                                roomImplement.save(room);
+                                tFieldRoomNo.setText("");
+                                spinnerRoomSize.setValue(0);
+                                JOptionPane.showMessageDialog(null, "Saved!");
+                            } catch (Exception e) {
+                                JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+                            }
+                        }
+                    });
+
+                    executor.shutdown();
+                }
             }
         });
+
         btnCancel.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -73,11 +84,7 @@ public class AddRooms extends JFrame {
         });
     }
 
-    public Room room;
-
     public static void main(String[] args) {
         AddRooms addRoomDetails = new AddRooms();
-        Room room = addRoomDetails.room;
     }
-
 }
