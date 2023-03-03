@@ -113,25 +113,26 @@ public class AddReservation extends JFrame {
                     reservation.setRoomNo(roomNo);
 
                     // Create a new ExecutorService with a fixed pool of threads
-                    ExecutorService executor = Executors.newFixedThreadPool(2);
+                    ExecutorService executor = Executors.newSingleThreadExecutor();
+                    executor.submit(new Runnable() {
+                        public void run() {
+                            try {
 
-                    // Submit the database operation to the executor
-                    executor.submit(() -> {
-                        // Save the reservation
-                        ReservationImplement reservationImplement = new ReservationImplement();
-                        reservationImplement.save(reservation);
+                                // Save the reservation
+                                ReservationImplement reservationImplement = new ReservationImplement();
+                                reservationImplement.save(reservation);
 
-                        // close the window and view manage reservation window
-                        dispose();
-                        ManageReservation manageReservation = new ManageReservation();
-                        manageReservation.setVisible(true);
+                                // close the window and view manage reservation window
+                                dispose();
+                                ManageReservation manageReservation = new ManageReservation();
+                                manageReservation.setVisible(true);
 
-                        // Update the UI when the operation is complete
-                        SwingUtilities.invokeLater(() -> {
-                            JOptionPane.showMessageDialog(null, "Saved!");
-                        });
+
+                            } catch (Exception ex) {
+                                JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+                            }
+                        }
                     });
-                    // Shutdown the executor after it has completed its tasks
                     executor.shutdown();
 
                 }

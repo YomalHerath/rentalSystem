@@ -66,30 +66,17 @@ public class ReservationImplement {
         Thread thread = new Thread(() -> {
             try {
                 Connection con = DBConnection.getConnection();
-                String sql = "UPDATE reservation SET clientName=?, clientContact=?, Occasion=?, fromDate=?, toDate=? ,reservedTime=?, endTime=?, timeOfDay=?, note=?, status=? WHERE reservationId=?";
+                String sql = "UPDATE reservation SET clientName=?, clientContact=?, Occasion=? ,reservedTime=?, endTime=?, timeOfDay=?, note=?, status=? WHERE reservationId=?";
                 PreparedStatement ps = con.prepareStatement(sql);
                 ps.setString(1, reservation.getClientName());
                 ps.setString(2, reservation.getClientContact());
                 ps.setString(3, reservation.getOccasion());
-                if (reservation.getStartDate() != null) {
-                    java.util.Date fromDate = reservation.getStartDate();
-                    java.sql.Date sqlFromDate = new java.sql.Date(fromDate.getTime());
-                    ps.setDate(5, sqlFromDate);
-                } else {
-                    ps.setNull(5, java.sql.Types.DATE);
-                }
-
-                if (reservation.getEndDate() != null) {
-                    java.util.Date toDate = reservation.getEndDate();
-                    java.sql.Date sqlToDate = new java.sql.Date(toDate.getTime());
-                    ps.setDate(6, sqlToDate);
-                } else {
-                    ps.setNull(6, java.sql.Types.DATE);
-                }
-                ps.setInt(7, reservation.getStime());
-                ps.setInt(8, reservation.getEtime());
-                ps.setString(9, reservation.getTimeOfDay());
-                ps.setString(10, reservation.getNote());
+                ps.setInt(4, reservation.getStime());
+                ps.setInt(5, reservation.getEtime());
+                ps.setString(6, reservation.getTimeOfDay());
+                ps.setString(7, reservation.getNote());
+                ps.setString(8, reservation.getStatus());
+                ps.setInt(9, reservation.getReservationId());
                 ps.executeUpdate();
 
                 String occasion = reservation.getOccasion();
@@ -98,7 +85,7 @@ public class ReservationImplement {
                     //update the room table as available
                     String sql2 = "UPDATE room SET availability = 'Available', status = 'Booked' WHERE roomNo = '" + reservation.getRoomNo() + "'";
                     Statement statement = con.createStatement();
-                    ps.execute(sql2);
+                    statement.executeUpdate(sql2);
                 }
 
             } catch (Exception e) {
@@ -107,6 +94,8 @@ public class ReservationImplement {
         });
         thread.start();
     }
+
+
 
     public Reservation get(String reservationId) {
         Reservation reservation = new Reservation();

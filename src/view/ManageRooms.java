@@ -24,6 +24,7 @@ public class ManageRooms extends JFrame {
     private JButton btnAddReservation;
     private JTextField tFieldRoomId;
     private JButton btnRemoveRoom;
+    private JButton btnAddMaintenance;
     private String[] data;
 
     // create heading for table with create table method
@@ -103,6 +104,23 @@ public class ManageRooms extends JFrame {
                     dispose();
                 }
 
+            }
+        });
+        btnAddMaintenance.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //pass clerk id to update form
+                String roomNo = tFieldRoomId.getText().trim();
+
+                //validate field
+                if (roomNo.isEmpty()) {
+                    JOptionPane.showMessageDialog(tFieldRoomId, "Enter Room No", "Error", JOptionPane.ERROR_MESSAGE);
+                } else {
+                    //pass clerk id and view form
+                    String passing_roomId = roomNo;
+                    AddMaintenance addMaintenance = new AddMaintenance(passing_roomId);
+                    dispose();
+                }
             }
         });
     }

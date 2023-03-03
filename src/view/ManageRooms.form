@@ -123,6 +123,22 @@
               <text value="Add Reservation"/>
             </properties>
           </component>
+          <component id="c8b67" class="javax.swing.JButton" binding="btnAddMaintenance">
+            <constraints/>
+            <properties>
+              <actionCommand value="Add Reservation"/>
+              <alignmentX value="0.5"/>
+              <background color="-13728063"/>
+              <font name="Fira Code" size="16" style="1"/>
+              <foreground color="-1"/>
+              <horizontalAlignment value="0"/>
+              <horizontalTextPosition value="0"/>
+              <inheritsPopupMenu value="false"/>
+              <label value="Add Maintence"/>
+              <preferredSize width="175" height="38"/>
+              <text value="Add Maintence"/>
+            </properties>
+          </component>
           <component id="88e67" class="javax.swing.JButton" binding="btnUpdateRoom">
             <constraints/>
             <properties>
